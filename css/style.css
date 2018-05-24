@@ -1,0 +1,510 @@
+#header_block
+{
+	width:65%;
+	margin:auto;
+	height:180px;
+	margin-top: 15px;
+	margin-bottom: 20px;
+	box-shadow: 1px 1px 10px #888888;
+    background-color: #ffffff;
+	align-content: center;
+}
+
+#introBackground{
+    background-color: #eaeaea;
+}
+
+.theContainer{
+	float:left;
+}
+.parent_container
+{
+    
+}
+
+.parent_container input[type="radio"]
+{
+	cursor:pointer;
+}
+
+.parent_container .mainBody span{
+	width: 100%;
+    font-family: "Calibri", Georgia, Serif;
+    font-size: 2em;
+    float: left;
+    text-align: left;
+    padding: 10px 10px 10px 10px;
+    color: black;
+    padding-top: 2em;
+	display: show; 
+}
+
+.parent_container .mainBody span:last-child{
+	width: 100%;
+    font-family: "Calibri", Georgia, Serif;
+    font-size: 1.3em;
+    float: left;
+    text-align: left;
+    padding: 10px 10px 10px 10px;
+    color: black;
+    padding-top: 3PX;
+}
+.parent_container .intro
+{
+	width:100%;
+	padding: 10px;
+	float: left;
+	text-align: center;
+}
+
+.parent_container .intro span
+{
+	width:100%;
+	font-family: "Calibri", Georgia, Serif;
+	font-size: 2em;
+	float: left;
+	text-align: center;
+	letter-spacing: 2px;
+}
+
+.parent_container .intro span:last-child
+{
+	width:100%;
+	font-family: "Calibri", Georgia, Serif;
+	font-size: 1.3em;
+	float: left;
+	text-align: center;
+	padding:10px 10px 10px 10px;
+	color: #62656b;
+letter-spacing: 5px;	
+}
+.parent_container .intro mainQuestion
+{
+   width:100%;
+	font-family: "Calibri", Georgia, Serif;
+	font-size: 2em;
+	float: left;
+	text-align: left;
+	padding:20px 10px 10px 10px; 
+}
+
+#movie_ribbon
+{
+	width:80%;
+	margin:auto;
+}
+
+.parent_container .block_holder
+{
+	float:left;
+	width:100em;
+	padding:0px 7px 7px 7px;
+	box-shadow: 1px 1px 10px #888888;
+    background-color: #ffffff;
+	height:600px;
+	
+}
+
+
+.parent_container .movie-block
+{	
+	width: 15%;
+	
+	float: left;
+	
+	margin-left: 2.5%;
+	margin-right: 2.5%;
+	margin-top: 15px; 
+	cursor: pointer;
+	 display: -webkit-flex; /* Safari */
+    -webkit-justify-content: space-around; /* Safari 6.1+ */
+    display: flex;
+    justify-content: space-around;
+	
+}
+
+.parent_container .movie-block .wrapper-block
+{
+	float:left;
+	width:100%;
+}
+
+.parent_container .movie-block .img-block
+{
+	float:left;
+	width:100%;
+}
+
+.parent_container .movie-block .img-block img
+{
+	width:100%;
+	height:180px;
+}
+
+.parent_container .movie-block .row_holder
+{
+	margin: auto;
+	display: block;
+	float:left;
+	width:100%;
+	
+}
+
+/*image opacity on hover for preference page*/
+.container {
+	position: relative;
+    width: 100%; 
+}
+
+.imageTrans {
+  opacity: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  transition: .5s ease;
+  backface-visibility: hidden;
+}
+
+.middle {
+  transition: .5s ease;
+  opacity: 0;
+  position: absolute;
+  width: 120px;
+  height: auto;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%)
+}
+
+.container:hover .imageTrans {
+  opacity: 0.5;
+}
+
+.container:hover .middle {
+  opacity: 0.9;
+}
+
+.text {
+  background-color: #357df2;
+  color: white;
+  font-size: 16px;
+  padding: 5px 5px;
+  text-align: center;
+}
+/*END image opacity on hover for preference page*/
+
+/*progress bar*/ 
+.parent_container .progressbar {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	overflow: hidden;
+	/*CSS counters to number the steps*/
+	counter-reset: step;
+}
+.parent_container .progressbar li {
+	list-style-type: none;
+	color: #a1a2a3;
+	text-align: center; 
+	text-transform: uppercase;
+	font-size: 14px;
+	width: 33.33%;
+	float: left;
+	position: relative;
+}
+.parent_container .progressbar li:before {
+	content: counter(step);
+	counter-increment: step;
+	width: 20px;
+	line-height: 20px;
+	display: block;
+	font-size: 14px;
+	color: #333;
+	background: white;
+	border-radius: 3px;
+	margin: 0 auto 5px auto;
+}
+/*progressbar connectors*/
+.parent_container .progressbar li:after {
+	content: '';
+	width: 100%;
+	height: 2px;
+	background-color: #a1a2a3;
+	position: absolute;
+	left: -50%;
+	top: 9px;
+	z-index: -1; /*put it behind the numbers*/
+}
+.parent_container .progressbar li:first-child:after {
+	/*connector not needed before the first step*/
+	content: none; 
+}
+/*marking active/completed steps blue*/
+/*The number of the step and the connector before it*/
+.parent_container .progressbar li.active:before,  #progressbar li.active:after{
+	background: #357df2;
+	color: white;
+}
+
+
+.parent_container .next-button
+{
+	float:right;
+	border-radius:12px; 
+    padding-top: 20px;
+    
+	
+}
+
+.parent_container .safe-button
+{
+	float:right;
+	border-radius:12px; 
+    padding-top: 20px;
+    cursor:not-allowed;
+	
+}
+
+#pageno
+{
+	float:left;
+	width:35px;
+	height:24px;
+	background-color:#357df2;
+	margin-left: 11.7%;
+    margin-top: 6px;
+	text-align:center;
+}
+
+#pageno span
+{
+	color:#FFFFFF;
+}
+
+.modal-body img
+{
+	position:relative;
+	float:left;
+	width: 150px;
+    height: 320px;	
+}
+#footer-container
+{
+	width: 100%;
+	height: 30px;
+	margin-top: 10px;
+	padding-top: 40px;
+}
+
+.rankHolder
+{
+	width: 20%;
+	float: center;
+	display:block;	
+	margin: auto;
+	align: center;
+	margin-top: 10px;
+	padding-top: 10px;
+	
+}
+
+.rankHolder span
+{
+	font-family: "Calibri", Georgia, Serif;
+	font-size: 1.6em;
+	float: left;
+	text-align: center;
+	padding-top: 17px;
+}
+
+.rankHolder span:nth-child(2)
+{
+	color: #357df2;
+	font-weight: bold;
+	padding-left: 5px;
+	padding-right: 5px;
+	
+}
+.rankHolder span:last-child
+{
+	font-family: "Calibri", Georgia, Serif;
+	font-size: 1.6em;
+	float: left;
+	text-align: center;
+	
+	color: #62656b;
+}
+
+.list-container 
+{
+	width: 100%;
+}
+
+.list-container .left
+{
+	width:30%;
+	float: left;
+	padding-top: 5px;
+}
+.list-container .right
+{
+	width:30%;
+	float: right;
+	padding-right: 5px;
+	padding-top: 5px;
+}
+
+.list-container .card-left
+{
+	width:35%; 
+	padding: 0px;
+	padding-top: 88px;
+	float:left; 
+	display:none
+}
+
+#overlay{
+	position: fixed;
+    display: none;
+    width: 30%;
+    height: 100%;
+	top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5);
+    z-index: 2;
+    cursor: pointer;
+}
+	
+/*List Group*/
+
+.text-container
+{
+	float:left;
+	width:60%;
+}
+
+.rating {
+    float:left;
+	align-content: center;
+	opacity:1;
+}
+
+
+.rating:not(:checked) > input {
+    position:absolute;
+    top:-9999px;
+    clip:rect(0,0,0,0);
+}
+
+.rating:not(:checked) > label {
+    float:right;
+    width:1em;
+    padding:0 .1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:125%;
+    line-height:1.2;
+    color:#ddd;
+    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:before {
+	content:'\2605';
+}
+
+.rating > input:checked ~ label {
+    color: gold;
+    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating:not(:checked) > label:hover,
+.rating:not(:checked) > label:hover ~ label {
+    color: #f70;
+    text-shadow:1px 1px #ea0, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > input:checked + label:hover,
+.rating > input:checked + label:hover ~ label,
+.rating > input:checked ~ label:hover,
+.rating > input:checked ~ label:hover ~ label,
+.rating > label:hover ~ input:checked ~ label {
+    color: goldenrod;
+    text-shadow:1px 1px #ea0, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+}
+
+.rating > label:active {
+    position:relative;
+    top:2px;
+    left:2px;
+}
+
+.introBorder{
+	border-width: 0px;
+    position: absolute;
+    left: -1.5em;
+    top: 0px;
+    width: 102em;
+    height: 53px;
+    background: inherit;
+    background-color: rgba(25, 158, 216, 1);
+    border: none;
+    border-radius: 0px;
+    -moz-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    -webkit-box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+    box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.349019607843137);
+	overflow:visible; 
+	float: center; 
+}
+
+#survey_section
+{
+	float:left;
+	width:100%;
+	padding: 15px;
+}
+
+#survey_section table
+{	
+	float:left;
+	width:100%;
+	border-top:1px dotted #000000;
+	border-left:3px solid #bfbfbf;
+	margin: 0px 0px 25px 0px;
+}
+
+#survey_section table tr
+{
+}
+
+#survey_section table tr:first-child td
+{
+	text-align:left;
+	font-weight:bold;
+}
+
+
+#survey_section table tr:first-child td span
+{
+	margin-left:25px;
+}
+
+#survey_section table tr:last-child td
+{
+	cursor:pointer;
+}
+
+#survey_section table tr:last-child td:hover
+{
+	background-color:#F8F2F2;
+}
+
+
+#survey_section table tr td
+{
+	width:20%;
+	height:30px;
+	text-align: center;
+}
