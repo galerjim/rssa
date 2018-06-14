@@ -7,22 +7,9 @@
 /**
  * Module dependencies.
  */
-const winston = require('winston');
-const logger = winston.createLogger({
-    level: 'info',
-    format: winston.format.simple(),
-    transports: [
-        new winston.transports.Console()
-    ]
-});
+const logger = require('./logger.js')(module);
 const app = require('./server/app.js');
 const http = require('http');
-
-/**
- * Get log level from environment.
- */
-logger.level = process.env.LOG_LEVEL || 'debug';
-app.set('logger', logger);
 
 /**
  * Get port from environment and store in Express.
