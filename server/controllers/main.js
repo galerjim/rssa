@@ -58,7 +58,7 @@ function redirectToNewId(req, res) {
 				userid: -1
 			},
 			limit: 1
-		}, function(err, doc) {
+		}).then(function(doc) {
 			let newUserId = START_ID;
 			if (doc != null && doc.length > 0) {
 				newUserId = parseInt(doc[0].userid) + 1;
@@ -78,18 +78,18 @@ function createNewUser(req, res, users, userid) {
 			logger.error("Error in createNewUser while getExperimentCondition :: " + err);
 			return res.end();
 		}
-		return users.insert({
-			_id: userid,
+		let data = {
 			userid: userid,
 			step: 0,
 			condition: expCondition,
 			step_data: []
-		}, function(err) {
+		};
+		return users.insert(data, function(err) {
 			if (err) {
 				logger.error("Error in createNewUser while users.insert :: " + err);
 				return res.end();
 			}
-			renderPageResponse(req, res, 'step_0.html', userid, {}, {
+			renderPageResponse(req, res, 'step_0.html', data, {
 				page: 'step_0.html',
 				step: 0
 			});
@@ -97,24 +97,18 @@ function createNewUser(req, res, users, userid) {
 	});
 }
 
-function renderPageResponse(req, res, page, userid, info, eventDesc, setCookie) {
+function renderPageResponse(req, res, page, data, eventDesc, setCookie) {
 	setCookie = typeof setCookie === 'undefined' ? true : setCookie;
-	let data = {
-		userid: userid
-	};
-	for (let key in info) {
-		data[key] = info[key];
-	}
 	res.render(page, {
 		data: data
 	}, function(err, html) {
 		if (setCookie) {
-			res = utils.setCookie(req, res, 'userid', userid);
+			res = utils.setCookie(req, res, 'userid', data.userid);
 		} else {
 			res = utils.deleteCookie(req, res, 'userid');
 		}
 		res.send(html);
-		utils.updateEvent(req, res, 'LOAD_PAGE', eventDesc, userid);
+		utils.updateEvent(req, res, 'LOAD_PAGE', eventDesc, data.userid);
 	});
 }
 
@@ -141,11 +135,11 @@ function getExperimentCondition(req, userid, cb) {
 					}
 				}
 				let expCondition = possibleConditions[Math.floor(Math.random() * possibleConditions.length)];
-				conditions.findAndModify({
-					conditionNum: expCondition.conditionNum
+				conditions.findOneAndUpdate({
+					number: expCondition.number
 				}, {
 					$inc: {
-						assigned: expCondition.incrementBy
+						assigned: expCondition.increment_by
 					}
 				}, {
 					new: true
@@ -154,7 +148,7 @@ function getExperimentCondition(req, userid, cb) {
 						logger.error("Error while incrementing selected condition, error = " + err);
 						cb(err, -1);
 					}
-					cb(err, doc.conditionNum);
+					cb(err, doc.number);
 				});
 			});
 	} catch (e) {
@@ -196,14 +190,14 @@ const idController = function(req, res, next) {
 		users.find({userid: userid}, {}, function(err, doc) {
 			try {
 				// If user not found,
-				if (doc === null) {
+				if (doc == null || doc.length == 0) {
 					return createNewUser(req, res, users, userid);
 				}
 
 				// If user is found,
-				renderPageResponse(req, res, 'step_' + doc.step + '.html', userid, doc, {
-					page: 'step_' + doc.step + '.html',
-					step: doc.step
+				renderPageResponse(req, res, 'step_' + doc[0].step + '.html', doc[0], {
+					page: 'step_' + doc[0].step + '.html',
+					step: doc[0].step
 				});
 			} catch (e) {
 				logger.log(e.stack);
