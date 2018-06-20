@@ -10,15 +10,13 @@
 const logger = require('../logger.js')(module);
 const express = require('express');
 const path = require('path');
-const favicon = require('serve-favicon');
 const httpLogger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const monk = require('monk');
 const useragent = require('express-useragent');
 
-var base = require('./routes/base.js');
-var api = require('./routes/api.js');
+var router = require('./routes/router.js');
 
 // start the express app
 const app = express();
@@ -83,19 +81,7 @@ app.use(function(req, res, next) {
 	next();
 });
 
-app.use('/', base);
-app.use('/api', api);
-
-//Ignore favicon
-app.use(function(req, res, next) {
-	if (req.originalUrl === '/favicon.ico') {
-		res.status(204).json({
-			nope: true
-		});
-	} else {
-		next();
-	}
-});
+app.use('/', router);
 
 // Catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -106,9 +92,9 @@ app.use(function(req, res, next) {
 
 // error handlers
 
-// development error handler
-// will print stacktrace
 if (app.get('env') === 'development') {
+	// development error handler
+	// will print stacktrace
 	app.use(function(err, req, res, next) {
 		res.status(err.status || 500);
 		res.render('error.html', {
@@ -116,16 +102,16 @@ if (app.get('env') === 'development') {
 			error: err
 		});
 	});
-}
-
-// production error handler
-// no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-	res.status(err.status || 500);
-	res.render('error.html', {
-		message: err.message,
-		error: {}
+} else {
+	// production error handler
+	// no stacktraces leaked to user
+	app.use(function(err, req, res, next) {
+		res.status(err.status || 500);
+		res.render('error.html', {
+			message: err.message,
+			error: {}
+		});
 	});
-});
+}
 
 module.exports = app;

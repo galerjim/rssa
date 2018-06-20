@@ -84,6 +84,7 @@ function onError(error) {
             process.exit(1);
             break;
         default:
+			logger.log(error.stack);
             throw error;
     }
 }

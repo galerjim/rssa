@@ -1,17 +1,15 @@
 ///////////////////////////////////////////
 //
-// base.js - Base Router ('/') for Express
+// status.js - Controller for Status API
 //
 ///////////////////////////////////////////
 
 const logger = require('../../logger.js')(module);
-const express = require('express');
-const router = express.Router();
+const request = require('request');
 
-/* GET server status interceptor */
-router.get('/status', function(req, res) {
+module.exports = function(req, res) {
 	try {
-		var result = {
+		let result = {
 			'success': false,
 			'result': {
 				'state': {
@@ -20,10 +18,10 @@ router.get('/status', function(req, res) {
 				}
 			}
 		};
-		var sendStatusResponse = function() {
-			var responseCode = 500;
-			if (req.db.hasOwnProperty('driver') && req.db.driver.hasOwnProperty('_native') && req.db.driver._native.hasOwnProperty('_state') &&
-				req.db.driver._native._state === 'connected') {
+		let sendStatusResponse = function() {
+			let responseCode = 500;
+			if (req.db && req.db.hasOwnProperty('_state') &&
+				req.db._state === 'open') {
 				result.result.state.db = 'up';
 			}
 			if (result.result.state.db == 'up' && result.result.state.recommendation_server == 'up') {
@@ -33,14 +31,13 @@ router.get('/status', function(req, res) {
 			res.status(responseCode).json(result);
 			res.end();
 		};
-		var statusTimer = setTimeout(sendStatusResponse, 20000);
-		var request = require('request');
-		request(req.recommendationServer, function(error, response, body) {
+		let statusTimer = setTimeout(sendStatusResponse, 20000);
+		request(req.settings.recommendationServer, function(error, response, body) {
 			try {
-				if (response.statusCode == 200) {
+				if (!error && response.statusCode == 200) {
 					result.result.state.recommendation_server = 'up';
 					sendStatusResponse();
-					statusTimer = null;
+					clearTimeout(statusTimer);
 				}
 			} catch (e) {
 				logger.debug("Error while attempting connection to recommendationServer :: " + e);
@@ -49,8 +46,4 @@ router.get('/status', function(req, res) {
 	} catch (e) {
 		logger.debug("Error in /status :: " + e);
 	}
-});
-
-
-
-module.exports = router;
+}
