@@ -64,11 +64,14 @@ const getMaxUserid = function(req, successCb, failureCb) {
 
 const setStep = function(req, userid, newStep, successCb, failureCb) {
 	userid = utils.pad(userid, 12);
+	if (utils.isNumeric(newStep)) newStep = Number(newStep);
 	let users = collectionMap.getCollection(req, collectionMap.COLLECTION_CONST.USERS);
 	users.findOneAndUpdate({
 		userid: userid
 	}, {
-		step: newStep
+		$set: {
+			step: newStep
+		}
 	}, function(err, doc) {
 		if (err) {
 			failureCb(err);
@@ -104,5 +107,7 @@ const setStepData = function(req, userid, step, stepData, successCb, failureCb) 
 module.exports = {
 	addUser: addUser,
 	getUser: getUser,
-	getMaxUserid: getMaxUserid
+	getMaxUserid: getMaxUserid,
+	setStep: setStep,
+	setStepData: setStepData
 };

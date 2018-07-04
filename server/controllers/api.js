@@ -84,8 +84,7 @@ const updateEventController = function(req, res, next) {
 	
 	let event = req.body.event;
 	let eventdesc = JSON.parse(req.body.eventdesc);
-	utils.updateEvent(req, res, event, eventdesc, req.params.id);
-	eventsModel.addEvent(req, res, event, eventdesc, userid, function() {
+	eventsModel.addEvent(req, res, event, eventdesc, req.params.id, function() {
 		res.json({
 			'success': true
 		});

@@ -1,135 +1,123 @@
 <!DOCTYPE HTML>
 <html lang="en">
-
-<head>
-  <title>Movie Recommender</title>
-  
-  <link href="css/style.css" rel="stylesheet" type="text/css" />
-   <link href="css/bootstrap.css" rel="stylesheet">
-   <script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
-  <script type="text/javascript" src="js/bootstrap.js"></script>
-  <script type="text/javascript" src="js/global.js"></script>
-
-  <script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
-  
-   
-</head>
-
-<body id="introBackground">
-<div class="parent_container">
-	
-	
-<div class="container-fluid">		 
-<div id="header_block">
-
-<div class="intro">
-		<span>INSTRUCTIONS:</span>
-		<span>PLEASE RATE 15 MOVIES THAT YOU HAVE WATCHED</span>
+	<head>
+		<title>Movie Recommender</title>
+		<link href="css/style.css" rel="stylesheet" type="text/css" />
+		<link href="css/bootstrap.css" rel="stylesheet">
+		<script>
+			window.SESSION_DATA = <%- JSON.stringify(data) %>;
+		</script>
+		<script src="https://cdn.logrocket.io/LogRocket.min.js" crossorigin="anonymous"></script>
+		<script type="text/javascript" src="js/jquery-3.1.1.min.js"></script>
+		<script type="text/javascript" src="js/study.js"></script>
+		<script type="text/javascript" src="js/bootstrap.js"></script>
+		<script type="text/javascript" src="js/global.js"></script>
+		<script src="http://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.6/highlight.min.js"></script>
+	</head>
+	<body id="introBackground">
+		<div class="parent_container">
+		<div class="container-fluid">
+			<div id="header_block">
+				<div class="intro">
+					<span>INSTRUCTIONS:</span>
+					<span>PLEASE RATE 15 MOVIES THAT YOU HAVE WATCHED</span>
+				</div>
+				<ul class="progressbar">
+					<li class="active">Step 1</li>
+					<li class="active">Step 2</li>
+					<li>Step 3</li>
+				</ul>
+			</div>
 		</div>
-       <ul class="progressbar">
-		<li class="active">Step 1</li>
-		<li class="active">Step 2</li>
-		<li>Step 3</li>
-	</ul>
-  
-</div>
-</div>
-	<div id="movie_ribbon">
-	<div class="block_holder">
-	<div class="list-container">
-	<div class="list-container left">
-	<div class="list-group" style="padding-top:30px; padding-left:5px;">
-	
-  <div class="list-group-item">Movies you may like</div>
-  <button type="button" class="list-group-item list-group-item-action" id="mov1">Lion King<!--<p style="font-size:0.9em;padding:0px;"><i>1992</i></p>-->
-   <div class="theContainer"> 
-   <fieldset class="rating" style="padding:0px; padding-left:250px;">
-						<input type="radio" id="star5_1" name="rating_1" value="5" /><label for="star5_1"></label>
-						<input type="radio" id="star4_1" name="rating_1" value="4" /><label for="star4_1"></label>
-						<input type="radio" id="star3_1" name="rating_1" value="3" /><label for="star3_1"></label>
-						<input type="radio" id="star2_1" name="rating_1" value="2" /><label for="star2_1"></label>
-						<input type="radio" id="star1_1" name="rating_1" value="1" /><label for="star1_1"></label>
-					</fieldset>
-	</div> 				
-  </button>
-  <button type="button" class="list-group-item list-group-item-action" id="mov2">The Notebook
-  <fieldset class="rating" style="padding:0px; padding-left:250px;">
-						<input type="radio" id="star5_1" name="rating_1" value="5" /><label for="star5_1"></label>
-						<input type="radio" id="star4_1" name="rating_1" value="4" /><label for="star4_1"></label>
-						<input type="radio" id="star3_1" name="rating_1" value="3" /><label for="star3_1"></label>
-						<input type="radio" id="star2_1" name="rating_1" value="2" /><label for="star2_1"></label>
-						<input type="radio" id="star1_1" name="rating_1" value="1" /><label for="star1_1"></label>
-					</fieldset>
-  </button>
-  <button type="button" class="list-group-item list-group-item-action" id="mov3">Men in Black II
-  <fieldset class="rating" style="padding-left:auto;">
-						<input type="radio" id="star5_1" name="rating_1" value="5" /><label for="star5_1"></label>
-						<input type="radio" id="star4_1" name="rating_1" value="4" /><label for="star4_1"></label>
-						<input type="radio" id="star3_1" name="rating_1" value="3" /><label for="star3_1"></label>
-						<input type="radio" id="star2_1" name="rating_1" value="2" /><label for="star2_1"></label>
-						<input type="radio" id="star1_1" name="rating_1" value="1" /><label for="star1_1"></label>
-					</fieldset>
-  </button>
-  <button type="button" class="list-group-item list-group-item-action"id="mov4">The Curious case of Benjamin Button</button>
-  <button type="button" class="list-group-item list-group-item-action" id="mov5">300</button>
-  <button type="button" class="list-group-item list-group-item-action" id="mov6">Braveheart</button>
-  <button type="button" class="list-group-item list-group-item-action" id="mov7">The Man in 3B</button>
-  <button type="button" class="list-group-item list-group-item-action" id="mov8">The Help</button>
-  <button type="button" class="list-group-item list-group-item-action" id="mov9">White Chicks</button>
-  <button type="button" class="list-group-item list-group-item-action" id="mov10">The Color Purple</button>
- 
-</div>
-	</div>
-	
-	<div class="list-container card-left" id="tester">
-	<div class="card">
-  <div class="card-block" >
-    <h3 class="card-title">Movie Name</h3>
-	<div class="text-container">
-	<h4 class="card-subtitle"><i> Overview</i></h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.</p>
-     <h4 class="card-subtitle"><i> Genre</i></h4>
-	 <p class="card-text">Comedy <br> Drama</p>
-	 <h4 class="card-subtitle"><i>Cast</i></h4>
-	 <p class="card-text">Jane Doe <br> John Doe</p>
-	 </div>
-	<div class="card-img">
-	<img src="img/m_1.jpg" style="width:150px;height:300px;">
-	</div>
-  </div>
-</div>
-	</div>
-	</div>
-	<div class="list-container">
-<div class="list-container right">
-	<div class="list-group" style="padding-top:30px; padding-left:5px;">
-	
-  <div class="list-group-item">Movies you may like</div>
-  <button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
-  <button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
-  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
-  <button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
- 
-</div>
-	</div>	
-	</div>
-	</div>
-	
-	
-	
-	<div class="next-button" >
-	<a class="btn btn-primary" href="#" role="button" id="testbutton">NEXT</a>
-	</div>
-	
-<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-</body>
-
+		<div id="movie_ribbon">
+		<div class="block_holder">
+			<div class="list-container">
+				<div class="list-container left">
+					<div class="list-group" style="padding-top:30px; padding-left:5px;">
+						<div class="list-group-item">Movies you may like</div>
+						<button type="button" class="list-group-item list-group-item-action" id="mov1">
+							Lion King<!--<p style="font-size:0.9em;padding:0px;"><i>1992</i></p>-->
+							<div class="theContainer">
+								<fieldset class="rating" style="padding:0px; padding-left:250px;">
+									<input type="radio" id="star5_1" name="rating_1" value="5" /><label for="star5_1"></label>
+									<input type="radio" id="star4_1" name="rating_1" value="4" /><label for="star4_1"></label>
+									<input type="radio" id="star3_1" name="rating_1" value="3" /><label for="star3_1"></label>
+									<input type="radio" id="star2_1" name="rating_1" value="2" /><label for="star2_1"></label>
+									<input type="radio" id="star1_1" name="rating_1" value="1" /><label for="star1_1"></label>
+								</fieldset>
+							</div>
+						</button>
+						<button type="button" class="list-group-item list-group-item-action" id="mov2">
+							The Notebook
+							<fieldset class="rating" style="padding:0px; padding-left:250px;">
+								<input type="radio" id="star5_1" name="rating_1" value="5" /><label for="star5_1"></label>
+								<input type="radio" id="star4_1" name="rating_1" value="4" /><label for="star4_1"></label>
+								<input type="radio" id="star3_1" name="rating_1" value="3" /><label for="star3_1"></label>
+								<input type="radio" id="star2_1" name="rating_1" value="2" /><label for="star2_1"></label>
+								<input type="radio" id="star1_1" name="rating_1" value="1" /><label for="star1_1"></label>
+							</fieldset>
+						</button>
+						<button type="button" class="list-group-item list-group-item-action" id="mov3">
+							Men in Black II
+							<fieldset class="rating" style="padding-left:auto;">
+								<input type="radio" id="star5_1" name="rating_1" value="5" /><label for="star5_1"></label>
+								<input type="radio" id="star4_1" name="rating_1" value="4" /><label for="star4_1"></label>
+								<input type="radio" id="star3_1" name="rating_1" value="3" /><label for="star3_1"></label>
+								<input type="radio" id="star2_1" name="rating_1" value="2" /><label for="star2_1"></label>
+								<input type="radio" id="star1_1" name="rating_1" value="1" /><label for="star1_1"></label>
+							</fieldset>
+						</button>
+						<button type="button" class="list-group-item list-group-item-action"id="mov4">The Curious case of Benjamin Button</button>
+						<button type="button" class="list-group-item list-group-item-action" id="mov5">300</button>
+						<button type="button" class="list-group-item list-group-item-action" id="mov6">Braveheart</button>
+						<button type="button" class="list-group-item list-group-item-action" id="mov7">The Man in 3B</button>
+						<button type="button" class="list-group-item list-group-item-action" id="mov8">The Help</button>
+						<button type="button" class="list-group-item list-group-item-action" id="mov9">White Chicks</button>
+						<button type="button" class="list-group-item list-group-item-action" id="mov10">The Color Purple</button>
+					</div>
+				</div>
+				<div class="list-container card-left" id="tester">
+					<div class="card">
+						<div class="card-block" >
+							<h3 class="card-title">Movie Name</h3>
+							<div class="text-container">
+								<h4 class="card-subtitle"><i> Overview</i></h4>
+								<p class="card-text">With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.</p>
+								<h4 class="card-subtitle"><i> Genre</i></h4>
+								<p class="card-text">Comedy <br> Drama</p>
+								<h4 class="card-subtitle"><i>Cast</i></h4>
+								<p class="card-text">Jane Doe <br> John Doe</p>
+							</div>
+							<div class="card-img">
+								<img src="img/m_1.jpg" style="width:150px;height:300px;">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="list-container">
+				<div class="list-container right">
+					<div class="list-group" style="padding-top:30px; padding-left:5px;">
+						<div class="list-group-item">Movies you may like</div>
+						<button type="button" class="list-group-item list-group-item-action">Dapibus ac facilisis in</button>
+						<button type="button" class="list-group-item list-group-item-action">Morbi leo risus</button>
+						<button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+						<button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+						<button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+						<button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+						<button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+						<button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+						<button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+						<button type="button" class="list-group-item list-group-item-action">Porta ac consectetur ac</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="next-button" >
+			<a class="btn btn-primary" href="#" role="button" id="testbutton">NEXT</a>
+		</div>
+		<script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	</body>
 </html>

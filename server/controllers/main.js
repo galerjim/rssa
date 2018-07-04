@@ -164,6 +164,8 @@ const idController = function(req, res, next) {
 }
 
 const moveController = function(req, res, next) {
+	if (!(req.body.newStep)) logger.error("Missing parameter in moveController :: newStep");
+	
 	let userid = req.params.id;
 	
 	//Redirect non numeric ids to a new id
@@ -176,7 +178,7 @@ const moveController = function(req, res, next) {
 			redirectToNewId(req, res);
 		} else {
 			updateEvent(req, res, 'MOVE_USER', {
-				newStep: newStep
+				newStep: req.body.newStep
 			}, userid);
 			redirect(res, userid);
 		}
