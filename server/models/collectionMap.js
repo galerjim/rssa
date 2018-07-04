@@ -4,9 +4,16 @@
 //
 ///////////////////////////////////////////////
 
+const getCollection = function(req, name) {
+	return req.db.get(name);
+};
+
 module.exports = {
-	MOVIES: 'movies',
-	USERS: 'rssa-users',
-	EVENTS: 'rssa-events',
-	CONDITIONS: 'rssa-conditions'
+	COLLECTION_CONST: {
+		MOVIES: 'movies',
+		USERS: 'rssa-users',
+		EVENTS: 'rssa-events',
+		CONDITIONS: 'rssa-conditions'
+	},
+	getCollection: getCollection
 };

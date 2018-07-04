@@ -16,7 +16,7 @@ const bodyParser = require('body-parser');
 const monk = require('monk');
 const useragent = require('express-useragent');
 
-var router = require('./routes/router.js');
+const router = require('./routes/router.js');
 
 // start the express app
 const app = express();
@@ -83,35 +83,10 @@ app.use(function(req, res, next) {
 
 app.use('/', router);
 
-// Catch 404 and forward to error handler
-app.use(function(req, res, next) {
-	var err = new Error('Not Found');
-	err.status = 404;
-	next(err);
+// error handler
+app.use(function(err, req, res, next) {
+	logger.error("Express Error :: " + err.message);
+	logger.info(err.stack);
 });
-
-// error handlers
-
-if (app.get('env') === 'development') {
-	// development error handler
-	// will print stacktrace
-	app.use(function(err, req, res, next) {
-		res.status(err.status || 500);
-		res.render('error.html', {
-			message: err.message,
-			error: err
-		});
-	});
-} else {
-	// production error handler
-	// no stacktraces leaked to user
-	app.use(function(err, req, res, next) {
-		res.status(err.status || 500);
-		res.render('error.html', {
-			message: err.message,
-			error: {}
-		});
-	});
-}
 
 module.exports = app;

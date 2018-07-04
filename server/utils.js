@@ -8,14 +8,13 @@ const logger = require('../logger.js')(module);
 const Hashids = require('hashids');
 const hashLength = 6;
 const hashids = new Hashids('', hashLength);
-const collectionMap = require('./models/collectionMap.js');
 
 /**
  * Pad a string with zero's on the left to required length.
  */
 const pad = function(str, max) {
-  str = str.toString();
-  return str.length < max ? pad("0" + str, max) : str;
+	str = str.toString();
+	return str.length < max ? pad("0" + str, max) : str;
 };
 
 /**
@@ -30,9 +29,9 @@ const isNumeric = function(n) {
  */
 const getClientIP = function(req) {
 	let ipAddr = req.headers["x-forwarded-for"];
-	if (ipAddr){
+	if (ipAddr) {
 		let list = ipAddr.split(",");
-		ipAddr = list[list.length-1];
+		ipAddr = list[list.length - 1];
 	} else {
 		ipAddr = req.connection.remoteAddress;
 	}
@@ -43,32 +42,9 @@ const getClientIP = function(req) {
  * Send an error response.
  */
 const sendErr = function(res, msg) {
-	res.status(500).json({ 'success': false, 'result': msg });
-};
-
-////////////////////
-// DB Utils
-////////////////////
-
-/**
- * Get MongoDB Collection from Request
- */
-const getCollection = function(req, name) {
-	return req.db.get(collectionMap[name]);
-};
-
-/**
- * Log events
- */
-const updateEvent = function(req, res, event, eventdesc, userid) {
-	let events = getCollection(req, 'EVENTS');
-	events.insert({
-		timestamp: new Date().getTime() / 1000, // number of seconds since epoch
-		event: event, // event name
-		decr: eventdesc, // event description
-		userid: userid // user who generated the event
-	}, function(err) {
-		if (err) return sendErr(res, 'Failed to log event.');
+	res.status(500).json({
+		'success': false,
+		'result': msg
 	});
 };
 
@@ -79,40 +55,40 @@ const updateEvent = function(req, res, event, eventdesc, userid) {
 
 function getCryptoObj(req) {
 	return {
-		lib : require('crypto'),
-		algorithm : 'aes-256-ctr',
-		password : req.settings.encryptionPassword
+		lib: require('crypto'),
+		algorithm: 'aes-256-ctr',
+		password: req.settings.encryptionPassword
 	}
 }
 
 /**
-* Encrypt string
-*/
-const encrypt = function(req, text){
+ * Encrypt string
+ */
+const encrypt = function(req, text) {
 	let crypto = getCryptoObj(req);
 	let cipher = crypto.lib.createCipher(crypto.algorithm, crypto.password)
-	let crypted = cipher.update(text,'utf8','hex')
+	let crypted = cipher.update(text, 'utf8', 'hex')
 	crypted += cipher.final('hex');
 	return crypted;
 };
 
 /**
-* Decrypt string
-*/
-const decrypt = function(req, text){
+ * Decrypt string
+ */
+const decrypt = function(req, text) {
 	let crypto = getCryptoObj(req);
 	let decipher = crypto.lib.createCipher(crypto.algorithm, crypto.password)
-	let dec = decipher.update(text,'hex','utf8')
+	let dec = decipher.update(text, 'hex', 'utf8')
 	dec += decipher.final('utf8');
 	return dec;
 };
 
 /**
-* Generate a hash of the ID
-*/
-const hash = function(req, id){
+ * Generate a hash of the ID
+ */
+const hash = function(req, id) {
 	let salt = req.settings.hashSalt;
-	if(!isNumeric(id) || !isNumeric(salt)) {
+	if (!isNumeric(id) || !isNumeric(salt)) {
 		throw "id or salt is not a number";
 	}
 	id = parseInt(id);
@@ -128,15 +104,15 @@ const hash = function(req, id){
 const durationOfStudy = 604800; //7 days
 
 /**
-* Get Cookie
-*/
+ * Get Cookie
+ */
 const getCookie = function(req, key) {
 	try {
 		let encryptedKey = encrypt(req, key);
-		if(Object.keys(req.cookies).length > 0 && req.cookies.hasOwnProperty(encryptedKey)) {
-			return decrypt( req, req.cookies[encryptedKey]);
+		if (Object.keys(req.cookies).length > 0 && req.cookies.hasOwnProperty(encryptedKey)) {
+			return decrypt(req, req.cookies[encryptedKey]);
 		}
-	} catch(e) {
+	} catch (e) {
 		logger.log(e.stack);
 		logger.error("Exception in getCookieValue :: key = " + key + " : error = " + e);
 	}
@@ -144,16 +120,19 @@ const getCookie = function(req, key) {
 }
 
 /**
-* Set Cookie
-*/
+ * Set Cookie
+ */
 const setCookie = function(req, res, key, value) {
-	res.cookie(encrypt(req, key), encrypt(req, value), { maxAge: durationOfStudy, httpOnly: true });
+	res.cookie(encrypt(req, key), encrypt(req, value), {
+		maxAge: durationOfStudy,
+		httpOnly: true
+	});
 	return res;
 }
 
 /**
-* Delete Cookie
-*/
+ * Delete Cookie
+ */
 const deleteCookie = function(req, res, key) {
 	res.clearCookie(encrypt(req, key));
 	return res
@@ -164,8 +143,6 @@ module.exports = {
 	isNumeric: isNumeric,
 	getClientIP: getClientIP,
 	sendErr: sendErr,
-	getCollection: getCollection,
-	updateEvent: updateEvent,
 	encrypt: encrypt,
 	decrypt: decrypt,
 	hash: hash,

@@ -84,7 +84,8 @@ function onError(error) {
             process.exit(1);
             break;
         default:
-			logger.log(error.stack);
+			logger.error('Error :: ' + error.code);
+			logger.info(error.stack);
             throw error;
     }
 }
@@ -107,5 +108,6 @@ function onListening() {
 
 function onClose(err) {
     logger.error('Shutting down server with error = ' + err);
+	logger.info(err.stack);
     process.exit();
 }

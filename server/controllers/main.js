@@ -7,6 +7,9 @@
 const logger = require('../../logger.js')(module);
 const request = require('request');
 const utils = require('../utils.js');
+const conditionsModel = require('../models/conditions.js');
+const usersModel = require('../models/users.js');
+const eventsModel = require('../models/events.js');
 
 const COMPATIBILITY_MATRIX = {
 	'Microsoft Windows': ['Chrome', 'Firefox', 'Opera', 'Edge'],
@@ -23,22 +26,22 @@ const START_ID = 1000;
 function checkBrowserCompatibility(req, res, userid) {
 	try {
 		let platform = req.useragent.platform;
-		if(!COMPATIBILITY_MATRIX.hasOwnProperty(req.useragent.platform)) {
+		if (!COMPATIBILITY_MATRIX.hasOwnProperty(req.useragent.platform)) {
 			platform = 'Other';
 		}
-		if(COMPATIBILITY_MATRIX[platform].indexOf(req.useragent.browser) == -1) {
+		if (COMPATIBILITY_MATRIX[platform].indexOf(req.useragent.browser) == -1) {
 			res.render('browser.html', {
 				data: COMPATIBILITY_MATRIX[platform]
 			}, function(err, html) {
 				res.send(html);
-				utils.updateEvent(req, res, 'LOAD_BROWSER_COMPATIBILITY_PAGE', {
-					user_agent: req.useragent, 
+				updateEvent(req, res, 'LOAD_BROWSER_COMPATIBILITY_PAGE', {
+					user_agent: req.useragent,
 					ip: utils.getClientIP(req)
 				}, userid);
 			});
 			return false;
 		}
-	} catch(e) {
+	} catch (e) {
 		logger.error("Exception in checkBrowserCompatibility :: Error = " + e + " , useragent = " + JSON.stringify(req.useragent));
 	}
 	return true;
@@ -49,114 +52,67 @@ function redirect(res, id) {
 }
 
 function redirectToNewId(req, res) {
-	let users = utils.getCollection(req, 'USERS');
-	try {
-		users.find({
-			userid: /^\d+$/
-		}, {
-			sort: {
-				userid: -1
-			},
-			limit: 1
-		}).then(function(doc) {
-			let newUserId = START_ID;
-			if (doc != null && doc.length > 0) {
-				newUserId = parseInt(doc[0].userid) + 1;
-			}
-			redirect(res, newUserId);
-		});
-	} catch (e) {
-		logger.log(e.stack);
-		logger.error("Exception in redirectToNewId :: " + e);
-		res.end();
-	}
-}
-
-function createNewUser(req, res, users, userid) {
-	return getExperimentCondition(req, userid, function(err, expCondition) {
-		if (err) {
-			logger.error("Error in createNewUser while getExperimentCondition :: " + err);
-			return res.end();
+	usersModel.getMaxUserid(req, function(found, maxUserid) {
+		let newUserId = START_ID;
+		if (found) {
+			newUserId = maxUserid + 1;
 		}
-		let data = {
-			userid: userid,
-			step: 0,
-			condition: expCondition,
-			step_data: []
-		};
-		return users.insert(data, function(err) {
-			if (err) {
-				logger.error("Error in createNewUser while users.insert :: " + err);
-				return res.end();
-			}
-			renderPageResponse(req, res, 'step_0.html', data, {
-				page: 'step_0.html',
-				step: 0
-			});
-		});
+		redirect(res, newUserId);
+	}, function(err) {
+		logger.error("Error in redirectToNewId while usersModel.getMaxUserid :: " + err);
 	});
 }
 
+function createNewUser(req, res, userid) {
+	return conditionsModel.getExperimentCondition(req, userid, function(expCondition) {
+		return usersModel.addUser(req, userid, expCondition, function(isPresent, doc) {
+			if(!isPresent) {
+				logger.error("Error in createNewUser while usersModel.addUser :: Inserted User could not be retrieved.");
+			} else {
+				handleExistingUser(req, res, doc);
+			}
+		}, function (err) {
+			logger.error("Error in createNewUser while usersModel.addUser :: " + err);
+		});
+	}, function(err) {
+		logger.error("Error in createNewUser while conditionsModel.getExperimentCondition :: " + err);
+	});
+}
+
+function handleExistingUser(req, res, doc) {
+	renderPageResponse(req, res, 'step_' + doc.step + '.html', doc, {
+		page: 'step_' + doc.step + '.html',
+		step: doc.step
+	}, true);
+}
+
 function renderPageResponse(req, res, page, data, eventDesc, setCookie) {
-	setCookie = typeof setCookie === 'undefined' ? true : setCookie;
 	res.render(page, {
 		data: data
 	}, function(err, html) {
+		if (err) {
+			logger.error("Error in renderPageResponse :: " + err);
+			return res.end();
+		}
+		
 		if (setCookie) {
 			res = utils.setCookie(req, res, 'userid', data.userid);
 		} else {
 			res = utils.deleteCookie(req, res, 'userid');
 		}
+		
 		res.send(html);
-		utils.updateEvent(req, res, 'LOAD_PAGE', eventDesc, data.userid);
+		updateEvent(req, res, 'LOAD_PAGE', eventDesc, data.userid);
 	});
 }
 
-function getExperimentCondition(req, userid, cb) {
-	try {
-		let conditions = utils.getCollection(req, 'CONDITIONS');
-		conditions.find({}, {
-				sort: {
-					assigned: 1
-				},
-
-			},
-			function(err, docs) {
-				if (err) {
-					logger.error("Error while obtaining conditions, error = " + err);
-					cb(err, -1);
-				}
-				let possibleConditions = [];
-				for (let i in docs) {
-					if (docs[i].assigned == docs[0].assigned) {
-						possibleConditions.push(docs[i]);
-					} else {
-						break;
-					}
-				}
-				let expCondition = possibleConditions[Math.floor(Math.random() * possibleConditions.length)];
-				conditions.findOneAndUpdate({
-					number: expCondition.number
-				}, {
-					$inc: {
-						assigned: expCondition.increment_by
-					}
-				}, {
-					new: true
-				}, function(err, doc) {
-					if (err) {
-						logger.error("Error while incrementing selected condition, error = " + err);
-						cb(err, -1);
-					}
-					cb(err, doc.number);
-				});
-			});
-	} catch (e) {
-		logger.log(e.stack);
-		logger.error("Exception in getExperimentCondition :: " + e);
-		cb(e, -1);
-	}
-}
+const updateEvent = function(req, res, event, eventdesc, userid) {
+	eventsModel.addEvent(req, event, eventdesc, userid, function() {
+		logger.debug('Event logged successfully');
+	}, function(err) {
+		logger.error('Error in updateEvent while eventsModel.addEvent :: ' + err);
+	});
+};
 
 ///////////////////////
 // Controler Functions
@@ -174,51 +130,63 @@ const newController = function(req, res, next) {
 };
 
 const idController = function(req, res, next) {
-	if (!utils.isNumeric(req.params.id)) {
+	let userid = req.params.id;
+
+	//Redirect non numeric ids to a new id
+	if (!utils.isNumeric(userid)) {
 		redirectToNewId(req, res);
 	}
-	// Get the user id from the request
-	let userid = utils.pad(req.params.id, 12);
-	
+
 	//Check if Browser if Compatible, else ask the user to download a compatible browser
-	if(!checkBrowserCompatibility(req, res, userid)) {
+	if (!checkBrowserCompatibility(req, res, userid)) {
 		return;
 	}
-	try {
-		// Check if user id exists
-		let users = utils.getCollection(req, 'USERS');
-		users.find({userid: userid}, {}, function(err, doc) {
-			try {
-				// If user not found,
-				if (doc == null || doc.length == 0) {
-					return createNewUser(req, res, users, userid);
-				}
+	
+	
+	// Check if user id exists
+	usersModel.getUser(req, userid, function(isPresent, doc) {
+		if(!isPresent) {
+			// If user not found
+			createNewUser(req, res, userid);
+		} else {
+			// If user is found
+			handleExistingUser(req, res, doc);
+		}
+	}, function(err) {
+		logger.error("Error in createNewUser while usersModel.getUser :: " + err);
+	});
 
-				// If user is found,
-				renderPageResponse(req, res, 'step_' + doc[0].step + '.html', doc[0], {
-					page: 'step_' + doc[0].step + '.html',
-					step: doc[0].step
-				});
-			} catch (e) {
-				logger.log(e.stack);
-				logger.error("idController :: Exception in handling doc = " + JSON.stringify(
-					doc) + " of id = " + userid);
-				res = utils.deleteCookie(req, res, 'userid');
-				res.end();
-			}
-		});
+	// Save the user agent from which the user is connecting
+	updateEvent(req, res, 'CONNECT_USER', {
+		user_agent: req.useragent,
+		ip: utils.getClientIP(req)
+	}, userid);
+}
 
-		// Save the user agent from which the user is connecting
-		utils.updateEvent(req, res, 'CONNECT_USER', {user_agent: req.useragent, ip: utils.getClientIP(req)}, userid);
-	} catch (e) {
-		logger.log(e.stack);
-		logger.error("idController :: Exception in handling id = " + userid);
-		res = utils.deleteCookie(req, res, 'userid');
-		res.end();
+const moveController = function(req, res, next) {
+	let userid = req.params.id;
+	
+	//Redirect non numeric ids to a new id
+	if (!utils.isNumeric(userid)) {
+		redirectToNewId(req, res);
 	}
+	
+	usersModel.setStep(req, userid, req.body.newStep, function(isPresent, doc) {
+		if(!isPresent) {
+			redirectToNewId(req, res);
+		} else {
+			updateEvent(req, res, 'MOVE_USER', {
+				newStep: newStep
+			}, userid);
+			redirect(res, userid);
+		}
+	}, function(err) {
+		logger.error("Error in moveController while usersModel.setStep :: " + err);
+	});
 }
 
 module.exports = {
 	newController: newController,
-	idController: idController
+	idController: idController,
+	moveController: moveController
 }
