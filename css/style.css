@@ -10,16 +10,47 @@
 	align-content: center;
 }
 
+.headerText
+{
+	width:100%;
+	padding: 10px;
+	float: left;
+	text-align: center;
+}
+
+
+.headerText span
+{
+	width:100%;
+	font-family: "Calibri", Georgia, Serif;
+	font-size: 2em;
+	float: left;
+	text-align: center;
+	letter-spacing: 2px;
+}
+
 #introBackground{
     background-color: #eaeaea;
+}
+
+.vertical-center {
+  min-height: 10%;  /* Fallback for browsers do NOT support vh unit */
+  min-height: 10vh; 
+  max-width: 400px; 
+  display: flex;
+  align-items: center;
 }
 
 .theContainer{
 	float:left;
 }
+
+.bodyContainer{
+	padding-right: 300px;
+}
 .parent_container
 {
-    
+ 
 }
 
 .parent_container input[type="radio"]
@@ -97,14 +128,26 @@ letter-spacing: 5px;
 .parent_container .block_holder
 {
 	float:left;
+	width:80em;
+	/*padding:0px 7px 7px 7px;*/
+	box-shadow: 1px 1px 10px #888888;
+    background-color: #ffffff;
+	height:630px;
+	margin: auto;
+	
+}
+
+.parent_container .movieHolder
+{
+	float:left;
 	width:100em;
 	padding:0px 7px 7px 7px;
 	box-shadow: 1px 1px 10px #888888;
     background-color: #ffffff;
-	height:600px;
+	height:630px;
+	margin: auto;
 	
 }
-
 
 .parent_container .movie-block
 {	
@@ -249,18 +292,35 @@ letter-spacing: 5px;
 
 .parent_container .next-button
 {
-	float:right;
+	float:left;
 	border-radius:12px; 
     padding-top: 20px;
-    
+	padding-left: 1000px; 
+	position: relative;
+    width: 100%;
+	
+}
+
+.parent_container .mainNextbutton
+{
+	    float: right;
+    border-radius: 12px;
+    padding-top: 20px;
+    padding-left: 200px;
+    padding-right: 250px;
+    position: relative;
+
 	
 }
 
 .parent_container .safe-button
 {
-	float:right;
+	float:left;
 	border-radius:12px; 
     padding-top: 20px;
+	padding-left: 1000px; 
+	position: relative;
+    width: 100%;
     cursor:not-allowed;
 	
 }
@@ -446,7 +506,7 @@ letter-spacing: 5px;
     position: absolute;
     left: -1.5em;
     top: 0px;
-    width: 102em;
+    width: 82em;
     height: 53px;
     background: inherit;
     background-color: rgba(25, 158, 216, 1);
