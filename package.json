@@ -1,0 +1,41 @@
+{
+  "name": "rssa",
+  "version": "0.0.1",
+  "description": "A web application to conduct survey and run studies on RSSA (Recommender System for Self-Actualization) algorithms",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daz101/rssa.git"
+  },
+  "keywords": [
+    "RSSA",
+    "Recommender",
+    "System",
+    "Survey",
+    "User",
+    "Study"
+  ],
+  "author": "Biswajyoti Pal",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/daz101/rssa/issues"
+  },
+  "homepage": "https://github.com/daz101/rssa#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "cookie-parser": "^1.4.3",
+    "ejs": "^2.6.1",
+    "express": "^4.16.3",
+    "express-useragent": "^1.0.12",
+    "hashids": "^1.1.4",
+    "monk": "^6.0.6",
+    "morgan": "^1.9.0",
+    "path": "^0.12.7",
+    "request": "^2.87.0",
+    "serve-favicon": "^2.5.0",
+    "winston": "^3.0.0"
+  }
+}
