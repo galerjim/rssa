@@ -6,15 +6,21 @@
   
   <link href="css/style.css" rel="stylesheet" type="text/css" />
    <link href="css/bootstrap.css" rel="stylesheet">
-   <script type="text/javascript" src="js/global.js"></script>
+    <link href="css/introjs.css" rel="stylesheet">
+   
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/global.js"></script>
 </head>
 
-<body id="introBackground">
+<body id="introBackground" onload="introJs().setOption({
+  exitOnOverlayClick: false
+}).start()">
 <div class="parent_container">
 	
 	
 <div class="container-fluid">		 
-<div id="header_block">
+<div id="header_block" data-intro="Please read the instructions carefully. You can monitor your progress by reviewing the progress bar" data-step="1">
 
 <div class="intro">
 		<span>INSTRUCTIONS</span>
@@ -30,11 +36,11 @@
 </div>
 	
 	<div id="movie_ribbon">
-	<div class="movieHolder">
+	<div class=" mainContainer prefHolder">
 	<div class="container-fluid">
 	
 	
-	<div class="movie-block" id="movie_1">
+	<div class="movie-block" id="movie_1" data-intro="Choose and rate 15 movies that you have already seen before. Hover over the movie to rate it." data-step="2">
 				<div class="container">
 				<div class="wrapper-block">
 				
@@ -314,156 +320,20 @@
 	</div>
 	
 	
-	<div class="container-fluid">
-	
-	
-	<div class="movie-block" id="movie_1">
-				<div class="container">
-				<div class="wrapper-block">
-				
-					<div class="img-block">
-						
-					   <img id="TN_1" src="img/m_1.jpg" class="imageTrans">
-					   
-					   <div class="middle">
-					   <fieldset class="rating">
-						<input type="radio" id="star5_11" name="rating_11" value="5" /><label for="star5_11"></label>
-						<input type="radio" id="star4_11" name="rating_11" value="4" /><label for="star4_11"></label>
-						<input type="radio" id="star3_11" name="rating_11" value="3" /><label for="star3_11"></label>
-						<input type="radio" id="star2_11" name="rating_11" value="2" /><label for="star2_11"></label>
-						<input type="radio" id="star1_11" name="rating_11" value="1" /><label for="star1_11"></label>
-					</fieldset>
-					<div class="text"> Movie Name</div>
-					</div>
-					</div>
-					
-					
-				</div>
-				</div>
-				
-			</div>
-			
-			<div class="movie-block" id="movie_2">
-				<div class="container">
-				<div class="wrapper-block">
-				
-					<div class="img-block">
-						
-					   <img id="TN_1" src="img/m_1.jpg" class="imageTrans">
-					   
-					   <div class="middle">
-					   <fieldset class="rating">
-						<input type="radio" id="star5_12" name="rating_12" value="5" /><label for="star5_12"></label>
-						<input type="radio" id="star4_12" name="rating_12" value="4" /><label for="star4_12"></label>
-						<input type="radio" id="star3_12" name="rating_12" value="3" /><label for="star3_12"></label>
-						<input type="radio" id="star2_12" name="rating_12" value="2" /><label for="star2_12"></label>
-						<input type="radio" id="star1_12" name="rating_12" value="1" /><label for="star1_12"></label>
-					</fieldset>
-					<div class="text"> Movie Name</div>
-					</div>
-					</div>
-					
-					
-				</div>
-				</div>
-				
-			</div>
-			
-			
-	<div class="movie-block" id="movie_3">
-				<div class="container">
-				<div class="wrapper-block">
-				
-					<div class="img-block">
-						
-					   <img id="TN_1" src="img/m_1.jpg" class="imageTrans">
-					   
-					   <div class="middle">
-					   <fieldset class="rating">
-						<input type="radio" id="star5_13" name="rating_13" value="5" /><label for="star5_13"></label>
-						<input type="radio" id="star4_13" name="rating_13" value="4" /><label for="star4_13"></label>
-						<input type="radio" id="star3_13" name="rating_13" value="3" /><label for="star3_13"></label>
-						<input type="radio" id="star2_13" name="rating_13" value="2" /><label for="star2_13"></label>
-						<input type="radio" id="star1_13" name="rating_13" value="1" /><label for="star1_13"></label>
-					</fieldset>
-					<div class="text"> Movie Name</div>
-					</div>
-					</div>
-					
-					
-				</div>
-				</div>
-				
-			</div>
 
-	<div class="movie-block" id="movie_4">
-				<div class="container">
-				<div class="wrapper-block">
-				
-					<div class="img-block">
-						
-					   <img id="TN_1" src="img/m_1.jpg" class="imageTrans">
-					   
-					   <div class="middle">
-					   <fieldset class="rating">
-						<input type="radio" id="star5_14" name="rating_14" value="5" /><label for="star5_14"></label>
-						<input type="radio" id="star4_14" name="rating_14" value="4" /><label for="star4_14"></label>
-						<input type="radio" id="star3_14" name="rating_14" value="3" /><label for="star3_14"></label>
-						<input type="radio" id="star2_14" name="rating_14" value="2" /><label for="star2_14"></label>
-						<input type="radio" id="star1_14" name="rating_14" value="1" /><label for="star1_14"></label>
-					</fieldset>
-					<div class="text"> Movie Name</div>
-					</div>
-					</div>
-					
-					
-				</div>
-				</div>
-				
-			</div>
-			
-	<div class="movie-block" id="movie_5">
-				<div class="container">
-				<div class="wrapper-block">
-				
-					<div class="img-block">
-						
-					   <img id="TN_1" src="img/m_1.jpg" class="imageTrans">
-					   
-					   <div class="middle">
-					   <fieldset class="rating">
-						<input type="radio" id="star5_15" name="rating_15" value="5" /><label for="star5_15"></label>
-						<input type="radio" id="star4_15" name="rating_15" value="4" /><label for="star4_15"></label>
-						<input type="radio" id="star3_15" name="rating_15" value="3" /><label for="star3_15"></label>
-						<input type="radio" id="star2_15" name="rating_15" value="2" /><label for="star2_15"></label>
-						<input type="radio" id="star1_15" name="rating_15" value="1" /><label for="star1_15"></label>
-					</fieldset>
-					<div class="text"> Movie Name</div>
-					</div>
-					</div>
-					
-					
-				</div>
-				</div>
-				
-			</div>
-	
 	</div>
 	</div>
-	</div>
-	<div class="mainNextbutton" >
+	<div class="mainNextbutton" class="next-button" data-intro="Once you have rated 15 movies on this page, you can proceed." data-step="4">
 	<a class="btn btn-primary" href="pg1.html" role="button" id="preference">NEXT</a>
 	</div>
-	<div id="footer-container">
-	<div class="rankHolder">
-	<span> Ranked Movies: </span>
+	<div id="footer-container" >
+	<div class="rankHolder" >
+	<span data-intro="You can track how many movies you have rated so far. You have to rate 15 in total." data-step="3"> Ranked Movies: </span>
 	<span> 0 </span> <span><i>of 15</i></span>
 	</div>
 	
 	</div>
-	
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<script type="text/javascript" src="js/intro.js"></script>	
 </body>
 
 </html>

@@ -37,6 +37,18 @@ $( "#consentButton" ).click(function() {
 	$('#resize, #resizeButton').show().fadeIn("slow");
 	}
 });
+
+//preference page rating
+$("#movie_").change(function(){
+	if('input[type=radio][name^=rating_]'.length >=1 )
+	{
+
+		$(".img-block").css({
+				"border": "4px solid blue"
+			});
+	}
+});
+
 	//end of consent safeguard 
     $("#mov1").hover(function(){
     $(".card-title").text("Lion King"); 

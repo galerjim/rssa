@@ -45,6 +45,19 @@
 	float:left;
 }
 
+.listContainer{
+	    float: left;
+    z-index: 3;
+    display: table-footer-group;
+    padding-left: 140px;
+    margin: auto;
+}
+
+.mainContainer{
+ max-width: 1000px;
+ margin: auto; 
+} 
+
 .bodyContainer{
 	padding-right: 300px;
 }
@@ -92,7 +105,7 @@
 {
 	width:100%;
 	font-family: "Calibri", Georgia, Serif;
-	font-size: 2em;
+	font-size: 1.5em;
 	float: left;
 	text-align: center;
 	letter-spacing: 2px;
@@ -102,7 +115,7 @@
 {
 	width:100%;
 	font-family: "Calibri", Georgia, Serif;
-	font-size: 1.3em;
+	font-size: 1em;
 	float: left;
 	text-align: center;
 	padding:10px 10px 10px 10px;
@@ -125,14 +138,19 @@ letter-spacing: 5px;
 	margin:auto;
 }
 
+#movie_ribbon_choices 
+{
+	width: 72%;
+	margin: auto; 
+}
 .parent_container .block_holder
 {
 	float:left;
 	width:80em;
-	/*padding:0px 7px 7px 7px;*/
+	padding:0px 7px 7px 7px;
 	box-shadow: 1px 1px 10px #888888;
     background-color: #ffffff;
-	height:630px;
+	height:530px;
 	margin: auto;
 	
 }
@@ -149,6 +167,18 @@ letter-spacing: 5px;
 	
 }
 
+.parent_container .prefHolder
+{
+	
+	width:100em;
+	padding:0px 7px 7px 7px;
+	box-shadow: 1px 1px 10px #888888;
+    background-color: #ffffff;
+	height:450px;
+	margin: auto;
+	
+}
+
 .parent_container .movie-block
 {	
 	width: 15%;
@@ -157,7 +187,7 @@ letter-spacing: 5px;
 	
 	margin-left: 2.5%;
 	margin-right: 2.5%;
-	margin-top: 15px; 
+	margin-top: 30px; 
 	cursor: pointer;
 	 display: -webkit-flex; /* Safari */
     -webkit-justify-content: space-around; /* Safari 6.1+ */
