@@ -51,7 +51,7 @@ $("#movie_").change(function(){
 
 //preference page, when movie is selected, show interaction
  $("input[type='radio']").click(function(){
- 	$("input:checked").parentsUntil(".wrapper-block").not(".middle, .rating").css({"border": "5px solid gold"});
+ 	$("input.prefStar:checked").parentsUntil(".wrapper-block").not(".middle, .rating").css({"border": "5px solid gold"});
 
  });
  

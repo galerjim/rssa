@@ -36,7 +36,7 @@
 .vertical-center {
   min-height: 10%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 10vh; 
-  max-width: 400px; 
+ /* max-width: 400px; */
   display: flex;
   align-items: center;
 }
@@ -60,7 +60,7 @@ margin: auto;
 } 
 
 .bodyContainer{
-	padding-right: 300px;
+	/* padding-right: 300px; */
 }
 
 @media (min-width: 576px) {
@@ -149,12 +149,12 @@ letter-spacing: 5px;
 }
 .parent_container .block_holder
 {
-	float:left;
+
 	width:80em;
 	padding:0px 7px 7px 7px;
 	box-shadow: 1px 1px 10px #888888;
     background-color: #ffffff;
-	height:530px;
+	height:470px;
 	margin: auto;
 	
 }
@@ -465,6 +465,21 @@ letter-spacing: 5px;
 	padding-top: 88px;
 	float:right;
 	display:none
+}
+
+button.list-group-item-action:hover/*background color change on hover for movie item */
+{
+background-color: #f3ba6a !important;
+}
+
+div.card 
+{
+	background-color: #f3ba6a;
+}
+
+.welcome-container
+{
+	
 }
 
 #overlay{
