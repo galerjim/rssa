@@ -1,0 +1,292 @@
+<!DOCTYPE HTML>
+<html lang="en">
+
+<head>
+  <title>Movie Recommender</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet" type="text/css" />
+  	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+	<script src="js/bootstrap.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+	<script type="text/javascript" src="js/global.js"></script>
+</head>
+
+<body id="introBackground">
+	<div class="parent_container container-fluid">	
+		
+		<div class="row">		 
+			<div id="header_block">
+				<div class="intro">
+					<span>SYSTEM EVALUATION</span>
+					<span>PLEASE READ THE INSTRUCTIONS BELOW</span>
+				</div>
+       			<ul class="progressbar">
+					<li>Step 1</li>
+					<li>Step 2</li>
+					<li class="active">Step 3</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="row vertical-center">
+			<div id="movie_ribbon">	 
+				<div class="survey_block_holder">	
+					
+					<div class="container-fluid">
+						<div class="introBorder"></div>
+					</div>
+	
+					<div class="container-fluid">
+						<div class="mainBody" id="mainBody">
+							<span>Survey</span>
+						</div>
+	
+						<div id="survey_section">
+							
+							<div id="surveypage1">
+								
+								<div class="movie-progress">           
+									<ul id="progress_circles">
+										<li class="step" id="pb_1"></li>
+										<li class="done" id="pb_2"></li>
+										<li class="done" id="pb_3"></li>
+										<li class="done" id="pb_4"></li>
+										<li class="done" id="pb_5"></li>
+										<li class="done" id="pb_6"></li>
+										<li class="step" id="pb_7"></li>
+										<li class="done" id="pb_8"></li>
+										<li class="done" id="pb_9"></li>
+										<li class="done" id="pb_10"></li>
+										<li class="activeStep" id="pb_11"></li>
+										<li class="stepDisabled" id="pb_12"></li>
+									</ul>     		
+								</div>
+		
+								<div id="survey_section" class="addBox">
+									<div class="intro">
+										<span>Please evaluate the following statements about your <b>LAST movie CHOICE</b> from <i>strongly disagree</i>i> to <i>strongly agree</i></span>
+									</div>
+		
+									<table class="question">
+										<tr>
+											<td colspan="5"><span>I like the movie I&#8217;ve chosen from the final recommendation list. </span></td>
+										</tr>
+										<tr>
+											<td>Strongly Disagree</td>
+											<td>Disagree</td>
+											<td>Neutral</td>
+											<td>Agree</td>
+											<td>Strongly Agree</td>
+										</tr>				
+										<tr class="rad_row">
+											<td><input type="radio" name="radOpt_1" value="1"></td>
+											<td><input type="radio" name="radOpt_1" value="2"></td>
+											<td><input type="radio" name="radOpt_1" value="3"></td>
+											<td><input type="radio" name="radOpt_1" value="4"></td>
+											<td><input type="radio" name="radOpt_1" value="5"></td>
+										</tr>
+									</table>
+			
+									<table class="question">
+										<tr>
+											<td colspan="5"><span>The chosen movie fits my preference.</span></td>
+										</tr>
+										<tr>
+											<td>Strongly Disagree</td>
+											<td>Disagree</td>
+											<td>Neutral</td>
+											<td>Agree</td>
+											<td>Strongly Agree</td>
+										</tr>
+										<tr class="rad_row">
+											<td><input type="radio" name="radOpt_2" value="1"></td>
+											<td><input type="radio" name="radOpt_2" value="2"></td>
+											<td><input type="radio" name="radOpt_2" value="3"></td>
+											<td><input type="radio" name="radOpt_2" value="4"></td>
+											<td><input type="radio" name="radOpt_2" value="5"></td>
+										</tr>
+									</table>
+			
+									<table class="question">
+										<tr>
+											<td colspan="5"><span>I would recommend my chosen movie to others/friends.</span></td>
+										</tr>
+										<tr>
+											<td>Strongly Disagree</td>
+											<td>Disagree</td>
+											<td>Neutral</td>
+											<td>Agree</td>
+											<td>Strongly Agree</td>
+										</tr>
+										<tr class="rad_row">
+											<td><input type="radio" name="radOpt_3" value="1"></td>
+											<td><input type="radio" name="radOpt_3" value="2"></td>
+											<td><input type="radio" name="radOpt_3" value="3"></td>
+											<td><input type="radio" name="radOpt_3" value="4"></td>
+											<td><input type="radio" name="radOpt_3" value="5"></td>
+										</tr>
+									</table>
+			
+								</div>
+							</div><!--End of Survey Page 1-->
+		
+		
+		<!--Begin of Survey Page 2-->
+							<div id="surveypage2">
+								<div class="movie-progress">           
+									<ul id="progress_circles">
+										<li class="step" id="pb_1"></li>
+										<li class="done" id="pb_2"></li>
+										<li class="done" id="pb_3"></li>
+										<li class="done" id="pb_4"></li>
+										<li class="done" id="pb_5"></li>
+										<li class="done" id="pb_6"></li>
+										<li class="step" id="pb_7"></li>
+										<li class="done" id="pb_8"></li>
+										<li class="done" id="pb_9"></li>
+										<li class="done" id="pb_10"></li>
+										<li class="activeStep" id="pb_11"></li>
+										<li class="stepDisabled" id="pb_12"></li>
+									</ul>     		
+								</div>
+		
+								<div id="survey_section" class="addBox">
+									<div class="intro">
+										<span>Please evaluate the following statements about your <b> LAST movie LIST </b>from <i>"strongly disagree"</i> to <i>"strongly agree"</i></span>
+									</div>
+									<table class="question">
+										<tr>
+											<td colspan="5"><span>I was excited about my chosen movie </span></td>
+										</tr>
+										<tr>
+											<td>Strongly Disagree</td>
+											<td>Disagree</td>
+											<td>Neutral</td>
+											<td>Agree</td>
+											<td>Strongly Agree</td>
+										</tr>				
+										<tr class="rad_row">
+											<td><input type="radio" name="radOpt_1" value="1"></td>
+											<td><input type="radio" name="radOpt_1" value="2"></td>
+											<td><input type="radio" name="radOpt_1" value="3"></td>
+											<td><input type="radio" name="radOpt_1" value="4"></td>
+											<td><input type="radio" name="radOpt_1" value="5"></td>
+										</tr>
+									</table>
+			
+									<table class="question">
+										<tr>
+											<td colspan="5"><span>I think I chose the best movie from the options </span></td>
+										</tr>
+										<tr>
+											<td>Strongly Disagree</td>
+											<td>Disagree</td>
+											<td>Neutral</td>
+											<td>Agree</td>
+											<td>Strongly Agree</td>
+										</tr>
+										<tr class="rad_row">
+											<td><input type="radio" name="radOpt_2" value="1"></td>
+											<td><input type="radio" name="radOpt_2" value="2"></td>
+											<td><input type="radio" name="radOpt_2" value="3"></td>
+											<td><input type="radio" name="radOpt_2" value="4"></td>
+											<td><input type="radio" name="radOpt_2" value="5"></td>
+										</tr>
+									</table>
+						
+								</div> 	
+							</div><!--End of Survey Page 2-->
+		
+		
+		<!--Begin Survey Page 3-->
+							<div id="surveypage3">
+								<div class="movie-progress">           
+									<ul id="progress_circles">
+										<li class="step" id="pb_1"></li>
+										<li class="done" id="pb_2"></li>
+										<li class="done" id="pb_3"></li>
+										<li class="done" id="pb_4"></li>
+										<li class="done" id="pb_5"></li>
+										<li class="done" id="pb_6"></li>
+										<li class="step" id="pb_7"></li>
+										<li class="done" id="pb_8"></li>
+										<li class="done" id="pb_9"></li>
+										<li class="done" id="pb_10"></li>
+										<li class="step" id="pb_11"></li>
+										<li class="activeStep" id="pb_12"></li>
+										<li id="pb_13"></li>
+										<li id="pb_14"></li>
+										<li id="pb_15"></li>
+										<li id="pb_16"></li>
+										<li class="stepDisabled" id="pb_17"></li>
+									</ul>     		
+								</div>
+								<div id="survey_section" class="addBox">
+									<div class="intro">
+										<span>Please evaluate the following statements about your <b> LAST movie LIST </b>from <i>"strongly disagree"</i> to <i>"strongly agree"</i></span>
+									</div>
+									<table class="question">
+										<tr>
+											<td colspan="5"><span>I would rather watch a different movie from the one I selected  </span></td>
+										</tr>
+										<tr>
+											<td>Strongly Disagree</td>
+											<td>Disagree</td>
+											<td>Neutral</td>
+											<td>Agree</td>
+											<td>Strongly Agree</td>
+										</tr>				
+										<tr class="rad_row">
+											<td><input type="radio" name="radOpt_1" value="1"></td>
+											<td><input type="radio" name="radOpt_1" value="2"></td>
+											<td><input type="radio" name="radOpt_1" value="3"></td>
+											<td><input type="radio" name="radOpt_1" value="4"></td>
+											<td><input type="radio" name="radOpt_1" value="5"></td>
+										</tr>
+									</table>
+			
+									<table class="question">
+										<tr>
+											<td colspan="5"><span>I know several movies that are better than the one I selected </span></td>
+										</tr>
+										<tr>
+											<td>Strongly Disagree</td>
+											<td>Disagree</td>
+											<td>Neutral</td>
+											<td>Agree</td>
+											<td>Strongly Agree</td>
+										</tr>
+										<tr class="rad_row">
+					<td><input type="radio" name="radOpt_2" value="1"></td>
+					<td><input type="radio" name="radOpt_2" value="2"></td>
+					<td><input type="radio" name="radOpt_2" value="3"></td>
+					<td><input type="radio" name="radOpt_2" value="4"></td>
+					<td><input type="radio" name="radOpt_2" value="5"></td>
+				</tr>
+			</table>
+			
+			
+		</div>
+		</div>
+		<!--End of Survey Page 3-->
+
+						</div>
+						
+	
+					<div class="safe-button"> 
+					<button type="button" class="btn btn-primary" id="consentButton" >Next</button>
+					</div> 
+
+				</div>
+			</div> 
+		</div>
+	
+	</div>
+	
+</body>
+
+</html>

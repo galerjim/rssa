@@ -1,15 +1,16 @@
 <!DOCTYPE HTML>
 <html lang="en">
-
 <head>
   <title>Movie Recommender</title>
-  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+
+  <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet" type="text/css" />
-   <link href="css/bootstrap.css" rel="stylesheet">
   
-   <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
   <script type="text/javascript" src="js/bootstrap.js"></script>
   <script type="text/javascript" src="js/global.js"></script>
@@ -23,162 +24,179 @@
   exitOnOverlayClick: false
 }).start()">
 <div class="parent_container">
-	
-	
-<div class="container-fluid">		 
-<div id="header_block">
-
-<div class="intro" data-intro="Please rate each movie in both lists. After you have done all 10 then you can proceed." data-step="1">
-		<span>INSTRUCTIONS:</span>
-		<span>PLEASE RATE 15 MOVIES THAT YOU HAVE WATCHED</span>
+	<div class="container-fluid">		 
+		<div id="header_block">
+			<div class="intro" data-intro="Please rate each movie in both lists. After you have done all 10 then you can proceed." data-step="1">
+				<span>INSTRUCTIONS:</span>
+				<span>PLEASE RATE 15 MOVIES THAT YOU HAVE WATCHED</span>
+			</div>
+       		<ul class="progressbar">
+				<li class="active">Step 1</li>
+				<li class="active">Step 2</li>
+				<li>Step 3</li>
+			</ul>  
 		</div>
-       <ul class="progressbar">
-		<li class="active">Step 1</li>
-		<li class="active">Step 2</li>
-		<li>Step 3</li>
-	</ul>
-  
-</div>
-</div>
+	</div>
+
 	<div id="movie_ribbon_choices">
-	<div class="block_holder">
-	<div class="list-container">
-	<div class="list-container left">
-	<div class="list-group" style="padding-top:30px; padding-left:5px;">
-	
-  <div class="list-group-item" data-intro="Rate each movie in the list on the right and on the left. Hover over the movie for more information" data-step="2">Movies you may like</div>
-  <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov1">Lion King<!--<p style="font-size:0.9em;padding:0px;"><i>1992</i></p>-->
-  
-   <fieldset class="rating" >
-						<input type="radio" id="star5_1" name="rating_1" value="5" /><label for="star5_1"></label>
-						<input type="radio" id="star4_1" name="rating_1" value="4" /><label for="star4_1"></label>
-						<input type="radio" id="star3_1" name="rating_1" value="3" /><label for="star3_1"></label>
-						<input type="radio" id="star2_1" name="rating_1" value="2" /><label for="star2_1"></label>
-						<input type="radio" id="star1_1" name="rating_1" value="1" /><label for="star1_1"></label>
-					</fieldset>
-				
-  </button>
-  <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov2">The Notebook
-  
-  <fieldset class="rating">
-						<input type="radio" id="star5_2" name="rating_2" value="5" /><label for="star5_2"></label>
-						<input type="radio" id="star4_2" name="rating_2" value="4" /><label for="star4_2"></label>
-						<input type="radio" id="star3_2" name="rating_2" value="3" /><label for="star3_2"></label>
-						<input type="radio" id="star2_2" name="rating_2" value="2" /><label for="star2_2"></label>
-						<input type="radio" id="star1_2" name="rating_2" value="1" /><label for="star1_2"></label>
-					</fieldset>
-				
-  </button>
-  <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov3">Men in Black II
-  <fieldset class="rating" >
-						<input type="radio" id="star5_3" name="rating_3" value="5" /><label for="star5_3"></label>
-						<input type="radio" id="star4_3" name="rating_3" value="4" /><label for="star4_3"></label>
-						<input type="radio" id="star3_3" name="rating_3" value="3" /><label for="star3_3"></label>
-						<input type="radio" id="star2_3" name="rating_3" value="2" /><label for="star2_3"></label>
-						<input type="radio" id="star1_3" name="rating_3" value="1" /><label for="star1_3"></label>
-					</fieldset>
-  </button>
-  <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"id="mov4">Benjamin Button
-  <fieldset class="rating" >
-						<input type="radio" id="star5_4" name="rating_4" value="5" /><label for="star5_4"></label>
-						<input type="radio" id="star4_4" name="rating_4" value="4" /><label for="star4_4"></label>
-						<input type="radio" id="star3_4" name="rating_4" value="3" /><label for="star3_4"></label>
-						<input type="radio" id="star2_4" name="rating_4" value="2" /><label for="star2_4"></label>
-						<input type="radio" id="star1_4" name="rating_4" value="1" /><label for="star1_4"></label>
-					</fieldset>
-  
-  </button>
-  <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov5">300
-   <fieldset class="rating" >
-						<input type="radio" id="star5_5" name="rating_5" value="5" /><label for="star5_5"></label>
-						<input type="radio" id="star4_5" name="rating_5" value="4" /><label for="star4_5"></label>
-						<input type="radio" id="star3_5" name="rating_5" value="3" /><label for="star3_5"></label>
-						<input type="radio" id="star2_5" name="rating_5" value="2" /><label for="star2_5"></label>
-						<input type="radio" id="star1_5" name="rating_5" value="1" /><label for="star1_5"></label>
-					</fieldset></button>
-
- 
-
-</div>
-	</div>
-	
-	<div class="list-container card-left" id="tester">
-	<div class="card">
-  <div class="card-block" >
-    <h3 class="card-title">Movie Name</h3>
-	<div class="text-container">
-	<h4 class="card-subtitle"><i> Overview</i></h4>
-    <p class="card-text">With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.</p>
-     <h4 class="card-subtitle"><i> Genre</i></h4>
-	 <p class="card-text">Comedy <br> Drama</p>
-	 <h4 class="card-subtitle"><i>Cast</i></h4>
-	 <p class="card-text">Jane Doe <br> John Doe</p>
-	 </div>
-	<div class="card-img">
-	<img src="img/m_1.jpg" style="width:150px;height:300px;">
-	</div>
-  </div>
-</div>
-	</div>
-	</div>
-	<div class="list-container">
-<div class="list-container right">
-	<div class="list-group" style="padding-top:30px; padding-left:5px;">
-	
-  <div class="list-group-item">Movies you may like</div>
-  <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">Dapibus ac facilisis in
-   <fieldset class="rating" >
-						<input type="radio" id="star5_6" name="rating_6" value="5" /><label for="star5_6"></label>
-						<input type="radio" id="star4_6" name="rating_6" value="4" /><label for="star4_6"></label>
-						<input type="radio" id="star3_6" name="rating_6" value="3" /><label for="star3_6"></label>
-						<input type="radio" id="star2_6" name="rating_6" value="2" /><label for="star2_6"></label>
-						<input type="radio" id="star1_6" name="rating_6" value="1" /><label for="star1_6"></label>
-					</fieldset>
+		<div class="block_holder">
+			<div class="list-container">
+				<div class="list-container left">
+					<div class="list-group" style="padding-top:30px; padding-left:5px;">	
+  						<div class="list-group-item" data-intro="Rate each movie in the list on the right and on the left. Hover over the movie for more information" data-step="2">Movies you may like</div>
+  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov1">Lion King<!--<p style="font-size:0.9em;padding:0px;"><i>1992</i></p>-->
+  						<fieldset class="rating" >
+					   		<input type="radio" id="star5_1" name="rating_1" value="5" /><label for="star5_1"></label>
+							<input type="radio" id="star4_1" name="rating_1" value="4" /><label for="star4_1"></label>
+							<input type="radio" id="star3_1" name="rating_1" value="3" /><label for="star3_1"></label>
+							<input type="radio" id="star2_1" name="rating_1" value="2" /><label for="star2_1"></label>
+							<input type="radio" id="star1_1" name="rating_1" value="1" /><label for="star1_1"></label>
+						</fieldset>
 					</button>
-  <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">Morbi leo risus
-  <fieldset class="rating" >
-						<input type="radio" id="star5_7" name="rating_7" value="5" /><label for="star5_7"></label>
-						<input type="radio" id="star4_7" name="rating_7" value="4" /><label for="star4_7"></label>
-						<input type="radio" id="star3_7" name="rating_7" value="3" /><label for="star3_7"></label>
-						<input type="radio" id="star2_7" name="rating_7" value="2" /><label for="star2_7"></label>
-						<input type="radio" id="star1_7" name="rating_7" value="1" /><label for="star1_7"></label>
-					</fieldset></button>
-  <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">Porta ac consectetur ac
-  <fieldset class="rating" >
-						<input type="radio" id="star5_8" name="rating_8" value="5" /><label for="star5_8"></label>
-						<input type="radio" id="star4_8" name="rating_8" value="4" /><label for="star4_8"></label>
-						<input type="radio" id="star3_8" name="rating_8" value="3" /><label for="star3_8"></label>
-						<input type="radio" id="star2_8" name="rating_8" value="2" /><label for="star2_8"></label>
-						<input type="radio" id="star1_8" name="rating_8" value="1" /><label for="star1_8"></label>
-					</fieldset></button>
-  <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">Porta ac consectetur ac
-  <fieldset class="rating" >
-						<input type="radio" id="star5_9" name="rating_9" value="5" /><label for="star5_9"></label>
-						<input type="radio" id="star4_9" name="rating_9" value="4" /><label for="star4_9"></label>
-						<input type="radio" id="star3_9" name="rating_9" value="3" /><label for="star3_9"></label>
-						<input type="radio" id="star2_9" name="rating_9" value="2" /><label for="star2_9"></label>
-						<input type="radio" id="star1_9" name="rating_9" value="1" /><label for="star1_9"></label>
-					</fieldset></button>
-  <button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center">Porta ac consectetur ac
-  <fieldset class="rating" >
-						<input type="radio" id="star5_10" name="rating_10" value="5" /><label for="star5_10"></label>
-						<input type="radio" id="star4_10" name="rating_10" value="4" /><label for="star4_10"></label>
-						<input type="radio" id="star3_10" name="rating_10" value="3" /><label for="star3_10"></label>
-						<input type="radio" id="star2_10" name="rating_10" value="2" /><label for="star2_10"></label>
-						<input type="radio" id="star1_10" name="rating_10" value="1" /><label for="star1_10"></label>
-					</fieldset></button>
+  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov2">The Notebook
+  						<fieldset class="rating">
+							<input type="radio" id="star5_2" name="rating_2" value="5" /><label for="star5_2"></label>
+							<input type="radio" id="star4_2" name="rating_2" value="4" /><label for="star4_2"></label>
+							<input type="radio" id="star3_2" name="rating_2" value="3" /><label for="star3_2"></label>
+							<input type="radio" id="star2_2" name="rating_2" value="2" /><label for="star2_2"></label>
+							<input type="radio" id="star1_2" name="rating_2" value="1" /><label for="star1_2"></label>
+						</fieldset>
+					</button>
+  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov3">Men in Black II
+  						<fieldset class="rating" >
+							<input type="radio" id="star5_3" name="rating_3" value="5" /><label for="star5_3"></label>
+							<input type="radio" id="star4_3" name="rating_3" value="4" /><label for="star4_3"></label>
+							<input type="radio" id="star3_3" name="rating_3" value="3" /><label for="star3_3"></label>
+							<input type="radio" id="star2_3" name="rating_3" value="2" /><label for="star2_3"></label>
+							<input type="radio" id="star1_3" name="rating_3" value="1" /><label for="star1_3"></label>
+						</fieldset>
+  					</button>
+  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov4">Benjamin Button
+  						<fieldset class="rating" >
+							<input type="radio" id="star5_4" name="rating_4" value="5" /><label for="star5_4"></label>
+							<input type="radio" id="star4_4" name="rating_4" value="4" /><label for="star4_4"></label>
+							<input type="radio" id="star3_4" name="rating_4" value="3" /><label for="star3_4"></label>
+							<input type="radio" id="star2_4" name="rating_4" value="2" /><label for="star2_4"></label>
+							<input type="radio" id="star1_4" name="rating_4" value="1" /><label for="star1_4"></label>
+						</fieldset>
+  					</button>
+  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov5">300
+   						<fieldset class="rating" >
+							<input type="radio" id="star5_5" name="rating_5" value="5" /><label for="star5_5"></label>
+							<input type="radio" id="star4_5" name="rating_5" value="4" /><label for="star4_5"></label>
+							<input type="radio" id="star3_5" name="rating_5" value="3" /><label for="star3_5"></label>
+							<input type="radio" id="star2_5" name="rating_5" value="2" /><label for="star2_5"></label>
+							<input type="radio" id="star1_5" name="rating_5" value="1" /><label for="star1_5"></label>
+						</fieldset>
+					</button>
 
+				</div>
+			</div>
+	
+			<div class="list-container card-left" id="tester">
+				<div class="card">
+  					<div class="card-block" >
+    					<h3 class="card-title">Movie Name</h3>
+						<div class="text-container">
+							<h4 class="card-subtitle"><i> Overview</i></h4>
+    						<p class="card-text">With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.</p>
+     						<h4 class="card-subtitle"><i> Genre</i></h4>
+	 						<p class="card-text">Comedy <br> Drama</p>
+	 						<h4 class="card-subtitle"><i>Cast</i></h4>
+							<p class="card-text">Jane Doe <br> John Doe</p>
+						</div>
+						<div class="card-img">
+							<img src="img/m_1.jpg" style="width:150px;height:300px;">
+						</div>
+  					</div>
+                </div>
+	        </div>
+	    </div>
+
+		<div class="list-container">
+			<div class="list-container right">
+				<div class="list-group" style="padding-top:30px;">
+					<div class="list-group-item">Movies you may like</div>
   
-</div>
-	</div>	
+  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov6">Star Wars
+   						<fieldset class="rating" >
+							<input type="radio" id="star5_6" name="rating_6" value="5" /><label for="star5_6"></label>
+							<input type="radio" id="star4_6" name="rating_6" value="4" /><label for="star4_6"></label>
+							<input type="radio" id="star3_6" name="rating_6" value="3" /><label for="star3_6"></label>
+							<input type="radio" id="star2_6" name="rating_6" value="2" /><label for="star2_6"></label>
+							<input type="radio" id="star1_6" name="rating_6" value="1" /><label for="star1_6"></label>
+						</fieldset>
+					</button>
+  
+  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov7">The Avengers
+  						<fieldset class="rating" >
+							<input type="radio" id="star5_7" name="rating_7" value="5" /><label for="star5_7"></label>
+							<input type="radio" id="star4_7" name="rating_7" value="4" /><label for="star4_7"></label>
+							<input type="radio" id="star3_7" name="rating_7" value="3" /><label for="star3_7"></label>
+							<input type="radio" id="star2_7" name="rating_7" value="2" /><label for="star2_7"></label>
+							<input type="radio" id="star1_7" name="rating_7" value="1" /><label for="star1_7"></label>
+						</fieldset>
+					</button>
+  
+  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov8">Citizen Kane
+  						<fieldset class="rating" >
+							<input type="radio" id="star5_8" name="rating_8" value="5" /><label for="star5_8"></label>
+							<input type="radio" id="star4_8" name="rating_8" value="4" /><label for="star4_8"></label>
+							<input type="radio" id="star3_8" name="rating_8" value="3" /><label for="star3_8"></label>
+							<input type="radio" id="star2_8" name="rating_8" value="2" /><label for="star2_8"></label>
+							<input type="radio" id="star1_8" name="rating_8" value="1" /><label for="star1_8"></label>
+						</fieldset>
+					</button>
+  
+  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov9">Inception
+  						<fieldset class="rating" >
+							<input type="radio" id="star5_9" name="rating_9" value="5" /><label for="star5_9"></label>
+							<input type="radio" id="star4_9" name="rating_9" value="4" /><label for="star4_9"></label>
+							<input type="radio" id="star3_9" name="rating_9" value="3" /><label for="star3_9"></label>
+							<input type="radio" id="star2_9" name="rating_9" value="2" /><label for="star2_9"></label>
+							<input type="radio" id="star1_9" name="rating_9" value="1" /><label for="star1_9"></label>
+						</fieldset>
+					</button>
+  
+  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov10">Porta ac consectetur ac
+  						<fieldset class="rating" >
+							<input type="radio" id="star5_10" name="rating_10" value="5" /><label for="star5_10"></label>
+							<input type="radio" id="star4_10" name="rating_10" value="4" /><label for="star4_10"></label>
+							<input type="radio" id="star3_10" name="rating_10" value="3" /><label for="star3_10"></label>
+							<input type="radio" id="star2_10" name="rating_10" value="2" /><label for="star2_10"></label>
+							<input type="radio" id="star1_10" name="rating_10" value="1" /><label for="star1_10"></label>
+						</fieldset>
+					</button>  
+				</div>
+			</div>
+
+			<div class="list-container card-right" id="tester2">
+				<div class="card">
+  					<div class="card-block" >
+    					<h3 class="card-title2">Movie Name</h3>
+						<div class="text-container">
+							<h4 class="card-subtitle"><i> Overview</i></h4>
+    						<p class="card-text">With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.With supporting text below as a natural lead-in to additional content.</p>
+     						<h4 class="card-subtitle"><i> Genre</i></h4>
+	 						<p class="card-text">Comedy <br> Drama</p>
+	 						<h4 class="card-subtitle"><i>Cast</i></h4>
+							<p class="card-text">Jane Doe <br> John Doe</p>
+						</div>
+						<div class="card-img">
+							<img src="img/m_1.jpg" style="width:150px;height:300px;">
+						</div>
+  					</div>
+                </div>
+	        </div>
+
+		</div>
 	</div>
-	</div>
-	
-	
 	
 	<div class="next-button" data-intro="Once you have rated all the movies on this page, you can proceed." data-step="3" >
-	<a class="btn btn-primary" href="#" role="button" id="testbutton">NEXT</a>
+		<a class="btn btn-primary" href="pg2.html" role="button" id="pg1">NEXT</a>
 	</div>
+	
+</div>
 	
 </body>
 

@@ -36,7 +36,7 @@
 .vertical-center {
   min-height: 10%;  /* Fallback for browsers do NOT support vh unit */
   min-height: 10vh; 
-  max-width: 400px; 
+ /* max-width: 400px; */
   display: flex;
   align-items: center;
 }
@@ -55,16 +55,20 @@
 
 .mainContainer{
  max-width: 1000px;
- margin: auto; 
+margin: auto;
+
 } 
 
 .bodyContainer{
-	padding-right: 300px;
+	/* padding-right: 300px; */
 }
-.parent_container
-{
- 
+
+@media (min-width: 576px) {
+  .bodyContainer {
+    max-width: 530px;
+  }
 }
+
 
 .parent_container input[type="radio"]
 {
@@ -145,12 +149,12 @@ letter-spacing: 5px;
 }
 .parent_container .block_holder
 {
-	float:left;
+
 	width:80em;
 	padding:0px 7px 7px 7px;
 	box-shadow: 1px 1px 10px #888888;
     background-color: #ffffff;
-	height:530px;
+	height:470px;
 	margin: auto;
 	
 }
@@ -174,7 +178,7 @@ letter-spacing: 5px;
 	padding:0px 7px 7px 7px;
 	box-shadow: 1px 1px 10px #888888;
     background-color: #ffffff;
-	height:450px;
+	height:250px;
 	margin: auto;
 	
 }
@@ -449,8 +453,33 @@ letter-spacing: 5px;
 	width:35%; 
 	padding: 0px;
 	padding-top: 88px;
-	float:left; 
+	float:left;
 	display:none
+}
+
+.list-container .card-right /* */
+{
+	width: 35%;
+	width:35%; 
+	padding: 0px;
+	padding-top: 88px;
+	float:right;
+	display:none
+}
+
+button.list-group-item-action:hover/*background color change on hover for movie item */
+{
+background-color: #f3ba6a !important;
+}
+
+div.card 
+{
+	background-color: #f3ba6a;
+}
+
+.welcome-container
+{
+	
 }
 
 #overlay{

@@ -49,6 +49,13 @@ $("#movie_").change(function(){
 	}
 });
 
+//preference page, when movie is selected, show interaction
+ $("input[type='radio']").click(function(){
+ 	$("input.prefStar:checked").parentsUntil(".wrapper-block").not(".middle, .rating").css({"border": "5px solid gold"});
+
+ });
+ 
+
 	//end of consent safeguard 
     $("#mov1").hover(function(){
     $(".card-title").text("Lion King"); 
@@ -69,6 +76,36 @@ $("#movie_").change(function(){
 	$("#mov4").hover(function(){
     $(".card-title").text("The Curious Case of Benjamin Button");    
        $("#tester").toggle();
+    });
+
+    $("#mov5").hover(function(){
+    $(".card-title").text("300");    
+       $("#tester").toggle();
+    });
+
+    $("#mov6").hover(function(){
+    $(".card-title2").text("Star Wars");    
+       $("#tester2").toggle();
+    });
+
+    $("#mov7").hover(function(){
+    $(".card-title2").text("The Avengers");    
+       $("#tester2").toggle();
+    });
+
+    $("#mov8").hover(function(){
+    $(".card-title2").text("Citizen Kane");    
+       $("#tester2").toggle();
+    });
+
+    $("#mov9").hover(function(){
+    $(".card-title2").text("Inception");    
+       $("#tester2").toggle();
+    });
+
+    $("#mov10").hover(function(){
+    $(".card-title2").text("Porta ac consectetur ac");    
+       $("#tester2").toggle();
     });
 	
 	$( "#preference" ).click(function() { 
