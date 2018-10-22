@@ -101,6 +101,7 @@ margin: auto;
 {
 	width:100%;
 	padding: 10px;
+	margin-top: 5px;
 	float: left;
 	text-align: center;
 }
@@ -537,7 +538,7 @@ letter-spacing: 5px;
 
 button.list-group-item-action:hover/*background color change on hover for movie item */
 {
-background-color: #f3ba6a !important;
+background-color: #f3ba6a; /* !important; */
 }
 
 div.card 
@@ -627,7 +628,9 @@ div.card
     top:2px;
     left:2px;
 }
-
+.choice-button {
+	background-color: #ccc;
+}
 .introBorder{
 	border-width: 0px;
     position: absolute;
@@ -694,4 +697,9 @@ div.card
 	width:20%;
 	height:30px;
 	text-align: center;
+}
+
+#survey-next-button{
+	float: right;
+	padding-right: 200px;
 }
