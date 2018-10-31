@@ -9,6 +9,13 @@ $(document).ready(function(){
     	$('#optional, #mainBody, #welcome').hide();
 		$('#consent, #consentButton').show().fadeIn("slow");
     });
+$("#consent_Q tr td").click(function() {
+		$('#consentCheckbox').trigger('click');
+		$(this).find('input[type="checkbox"]').each(function() {
+			$(this).prop('checked', true);
+		});
+		$("#consent_Q").css("border-left", "3px solid #00cc00");
+	});
 	
 	$('#resizeButton').click(function(){
 		$('#resize, #resizeButton').hide();	
@@ -120,6 +127,30 @@ $(document).ready(function(){
  		$(this).toggleClass("btn-primary");
 	});
 
+	//attention textbox 
+	$('#textbox').keyup(function() {
+		if ($(this).val().length != 0) {
+			$('#attentionButton').attr('disabled', false);
+			$('.survey-next-button button').css({
+				"cursor": "pointer",
+				"opacity": "1",
+				"background-color": "#5cb85c"
+			});
+		} else {
+			$('#attentionButton').attr('disabled', true);
+		}
+
+	});
+	
+	
+	//survey page visual cue for completion (red/green) 
+	$(".question .rad_row td").click(function() {
+		$(this).find('input[type="radio"]').each(function() {
+			$(this).prop('checked', true);
+		});
+		$(this).parent().parent().css("border-left", "3px solid #00cc00");
+	});
+	
 
 $('#surveypage2, #surveypage3,#surveypage4, #surveypage5, #surveypage6, #surveypage7, #surveypage8, #surveypage9, #surveypage10,#surveypage11,#surveypage12, #surveypage13, #surveypage14').hide();
 	
