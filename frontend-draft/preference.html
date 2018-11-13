@@ -10,21 +10,28 @@
   <link href="css/bootstrap.css" rel="stylesheet">
   <link href="css/introjs.css" rel="stylesheet">
   <link href="css/style.css" rel="stylesheet" type="text/css" />
-   
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script> 
+  <!--
    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js" integrity="sha384-A7FZj7v+d/sdmMqp/nOQwliLvUsJfDHW+k9Omg/a/EheAdgtzNs3hpfag6Ed950n" crossorigin="anonymous"></script>
+-->
    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 	<script type="text/javascript" src="js/global.js"></script>
 </head>
-
-<<<<<<< HEAD
+<!--
+<<<<<<< HEAD   
+-->
 <body id="introBackground" onload="introJs().start()">
+<!--
 =======
+-->
 <body id="introBackground" onload="introJs().setOption({
   exitOnOverlayClick: false
 }).start()">
-
+<!--
 >>>>>>> 080a92db91bf5d43ff1c66da8e384813327bd8de
+-->
 <div class="parent_container">
 		
 	<div class="container-fluid">		 
@@ -46,7 +53,8 @@
 	
 	<div id="movie_ribbon">
 		<div class=" mainContainer prefHolder">
-			<div class="container-fluid">
+             <! -- start of movie list page 1 -->
+			<div class="container-fluid" id="prefPage1">
 	
 				<div class="movie-block" id="movie_1" data-intro="Choose and rate 15 movies that you have already seen before. Hover over the movie to rate it." data-step="2">
 					<div class="container">
@@ -176,10 +184,89 @@
 				</div>
 	
 			</div>
+			<!-- end of movie list pg 1-->
+
+			<! -- start of movie preference list page 2 -->
+			<div class="container-fluid" id="prefPage2">
 	
-			<!--
-			<div class="container-fluid">	
-				<div class="movie-block" id="movie_1">
+				<div class="movie-block" id="movie_6" data-intro="Choose and rate 15 movies that you have already seen before. Hover over the movie to rate it." data-step="2">
+					<div class="container">
+						<div class="wrapper-block">
+				
+							<div class="img-block">
+					
+					   			<img id="TN_1" src="img/m_1.jpg" class="imageTrans">
+					   
+					   			<div class="middle">
+					    			<fieldset class="rating">
+										<input class="prefStar" type="radio" id="star5_6" name="rating_6" value="5" /><label for="star5_6"></label>
+										<input class="prefStar" type="radio" id="star4_6" name="rating_6" value="4" /><label for="star4_6"></label>
+										<input class="prefStar" type="radio" id="star3_6" name="rating_6" value="3" /><label for="star3_6"></label>
+										<input class="prefStar" type="radio" id="star2_6" name="rating_6" value="2" /><label for="star2_6"></label>
+										<input class="prefStar" type="radio" id="star1_6" name="rating_6" value="1" /><label for="star1_6"></label>
+									</fieldset>
+									<div class="text" >
+									<span>Movie Name Here Example</span>
+									</div>
+								</div>
+							</div>
+					
+						</div>
+				
+					</div>
+				
+				</div>
+			
+				<div class="movie-block" id="movie_7">
+					<div class="container">
+						<div class="wrapper-block">
+				
+							<div class="img-block">
+						
+					   			<img id="TN_1" src="img/m_1.jpg" class="imageTrans">
+					   
+					   			<div class="middle">
+					  	 			<fieldset class="rating">
+										<input class="prefStar" type="radio" id="star5_7" name="rating_7" value="5" /><label for="star5_7"></label>
+										<input class="prefStar" type="radio" id="star4_7" name="rating_7" value="4" /><label for="star4_7"></label>
+										<input class="prefStar" type="radio" id="star3_7" name="rating_7" value="3" /><label for="star3_7"></label>
+										<input class="prefStar" type="radio" id="star2_7" name="rating_7" value="2" /><label for="star2_7"></label>
+										<input class="prefStar" type="radio" id="star1_7" name="rating_7" value="1" /><label for="star1_7"></label>
+									</fieldset>
+									<div class="text"> Movie Name</div>
+					 
+								</div>
+							</div>
+					
+						</div>
+					</div>
+				</div>
+			
+				<div class="movie-block" id="movie_8">
+					<div class="container">
+						<div class="wrapper-block">
+				
+							<div class="img-block">
+						
+					   			<img id="TN_1" src="img/m_1.jpg" class="imageTrans">
+					   
+					   			<div class="middle">
+					    			<fieldset class="rating">
+										<input class="prefStar" type="radio" id="star5_8" name="rating_8" value="5" /><label for="star5_8"></label>
+										<input class="prefStar" type="radio" id="star4_8" name="rating_8" value="4" /><label for="star4_8"></label>
+										<input class="prefStar" type="radio" id="star3_8" name="rating_8" value="3" /><label for="star3_8"></label>
+										<input class="prefStar" type="radio" id="star2_8" name="rating_8" value="2" /><label for="star2_8"></label>
+										<input class="prefStar" type="radio" id="star1_8" name="rating_8" value="1" /><label for="star1_8"></label>
+									</fieldset>
+									<div class="text"> Movie Name</div>
+								</div>
+							</div>
+					
+						</div>
+					</div>				
+				</div>
+
+				<div class="movie-block" id="movie_9">
 					<div class="container">
 						<div class="wrapper-block">
 				
@@ -189,36 +276,199 @@
 					   
 					   			<div class="middle">
 					   				<fieldset class="rating">
-										<input type="radio" id="star5_6" name="rating_6" value="5" /><label for="star5_6"></label>
-										<input type="radio" id="star4_6" name="rating_6" value="4" /><label for="star4_6"></label>
-										<input type="radio" id="star3_6" name="rating_6" value="3" /><label for="star3_6"></label>
-										<input type="radio" id="star2_6" name="rating_6" value="2" /><label for="star2_6"></label>
-										<input type="radio" id="star1_6" name="rating_6" value="1" /><label for="star1_6"></label>
+										<input class="prefStar" type="radio" id="star5_9" name="rating_9" value="5" /><label for="star5_9"></label>
+										<input class="prefStar" type="radio" id="star4_9" name="rating_9" value="4" /><label for="star4_9"></label>
+										<input class="prefStar" type="radio" id="star3_9" name="rating_9" value="3" /><label for="star3_9"></label>
+										<input class="prefStar" type="radio" id="star2_9" name="rating_9" value="2" /><label for="star2_9"></label>
+										<input class="prefStar" type="radio" id="star1_9" name="rating_9" value="1" /><label for="star1_9"></label>
 									</fieldset>
 									<div class="text"> Movie Name</div>
 								</div>
 							</div>
+					
 					
 						</div>
 					</div>
 				
 				</div>
 			
-			-->
+				<div class="movie-block" id="movie_10">
+					<div class="container">
+						<div class="wrapper-block">
+				
+							<div class="img-block">
+						
+					   			<img id="TN_1" src="img/m_1.jpg" class="imageTrans">
+					   
+					   			<div class="middle">
+					   				<fieldset class="rating">
+										<input class="prefStar" type="radio" id="star5_10" name="rating_10" value="5" /><label for="star5_10">5 stars</label>
+										<input class="prefStar" type="radio" id="star4_10" name="rating_10" value="4" /><label for="star4_10">4 stars</label>
+										<input class="prefStar" type="radio" id="star3_10" name="rating_10" value="3" /><label for="star3_10">3 stars</label>
+										<input class="prefStar" type="radio" id="star2_10" name="rating_10" value="2" /><label for="star2_10">2 stars</label>
+										<input class="prefStar" type="radio" id="star1_10" name="rating_10" value="1" /><label for="star1_10">1 star</label>
+									</fieldset>
+									<div class="text"> Movie Name</div>
+								</div>
+							</div>										
+						</div>
+					</div>
+				
+				</div>
+	
+			</div>
+			<!-- end of movie preference list pg 2 -->
+			<! -- start of movie list page 3 -->
+			<div class="container-fluid" id="prefPage3">
+	
+				<div class="movie-block" id="movie_11" data-intro="Choose and rate 15 movies that you have already seen before. Hover over the movie to rate it." data-step="2">
+					<div class="container">
+						<div class="wrapper-block">
+				
+							<div class="img-block">
+					
+					   			<img id="TN_1" src="img/m_1.jpg" class="imageTrans">
+					   
+					   			<div class="middle">
+					    			<fieldset class="rating">
+										<input class="prefStar" type="radio" id="star5_11" name="rating_11" value="5" /><label for="star5_11"></label>
+										<input class="prefStar" type="radio" id="star4_11" name="rating_11" value="4" /><label for="star4_11"></label>
+										<input class="prefStar" type="radio" id="star3_11" name="rating_11" value="3" /><label for="star3_11"></label>
+										<input class="prefStar" type="radio" id="star2_11" name="rating_11" value="2" /><label for="star2_11"></label>
+										<input class="prefStar" type="radio" id="star1_11" name="rating_11" value="1" /><label for="star1_11"></label>
+									</fieldset>
+									<div class="text" >
+									<span>Movie Name Here Example</span>
+									</div>
+								</div>
+							</div>
+					
+						</div>
+				
+					</div>
+				
+				</div>
+			
+				<div class="movie-block" id="movie_12">
+					<div class="container">
+						<div class="wrapper-block">
+				
+							<div class="img-block">
+						
+					   			<img id="TN_1" src="img/m_1.jpg" class="imageTrans">
+					   
+					   			<div class="middle">
+					  	 			<fieldset class="rating">
+										<input class="prefStar" type="radio" id="star5_12" name="rating_12" value="5" /><label for="star5_12"></label>
+										<input class="prefStar" type="radio" id="star4_12" name="rating_12" value="4" /><label for="star4_12"></label>
+										<input class="prefStar" type="radio" id="star3_12" name="rating_12" value="3" /><label for="star3_12"></label>
+										<input class="prefStar" type="radio" id="star2_12" name="rating_12" value="2" /><label for="star2_12"></label>
+										<input class="prefStar" type="radio" id="star1_12" name="rating_12" value="1" /><label for="star1_12"></label>
+									</fieldset>
+									<div class="text"> Movie Name</div>
+					 
+								</div>
+							</div>
+					
+						</div>
+					</div>
+				</div>
+			
+				<div class="movie-block" id="movie_13">
+					<div class="container">
+						<div class="wrapper-block">
+				
+							<div class="img-block">
+						
+					   			<img id="TN_1" src="img/m_1.jpg" class="imageTrans">
+					   
+					   			<div class="middle">
+					    			<fieldset class="rating">
+										<input class="prefStar" type="radio" id="star5_13" name="rating_13" value="5" /><label for="star5_13"></label>
+										<input class="prefStar" type="radio" id="star4_13" name="rating_13" value="4" /><label for="star4_13"></label>
+										<input class="prefStar" type="radio" id="star3_13" name="rating_13" value="3" /><label for="star3_13"></label>
+										<input class="prefStar" type="radio" id="star2_13" name="rating_13" value="2" /><label for="star2_13"></label>
+										<input class="prefStar" type="radio" id="star1_13" name="rating_13" value="1" /><label for="star1_13"></label>
+									</fieldset>
+									<div class="text"> Movie Name</div>
+								</div>
+							</div>
+					
+						</div>
+					</div>				
+				</div>
+
+				<div class="movie-block" id="movie_14">
+					<div class="container">
+						<div class="wrapper-block">
+				
+							<div class="img-block">
+						
+					   			<img id="TN_1" src="img/m_1.jpg" class="imageTrans">
+					   
+					   			<div class="middle">
+					   				<fieldset class="rating">
+										<input class="prefStar" type="radio" id="star5_14" name="rating_14" value="5" /><label for="star5_14"></label>
+										<input class="prefStar" type="radio" id="star4_14" name="rating_14" value="4" /><label for="star4_14"></label>
+										<input class="prefStar" type="radio" id="star3_14" name="rating_14" value="3" /><label for="star3_14"></label>
+										<input class="prefStar" type="radio" id="star2_14" name="rating_14" value="2" /><label for="star2_14"></label>
+										<input class="prefStar" type="radio" id="star1_14" name="rating_14" value="1" /><label for="star1_14"></label>
+									</fieldset>
+									<div class="text"> Movie Name</div>
+								</div>
+							</div>
+					
+					
+						</div>
+					</div>
+				
+				</div>
+			
+				<div class="movie-block" id="movie_15">
+					<div class="container">
+						<div class="wrapper-block">
+				
+							<div class="img-block">
+						
+					   			<img id="TN_1" src="img/m_1.jpg" class="imageTrans">
+					   
+					   			<div class="middle">
+					   				<fieldset class="rating">
+										<input class="prefStar" type="radio" id="star5_15" name="rating_15" value="5" /><label for="star5_15">5 stars</label>
+										<input class="prefStar" type="radio" id="star4_15" name="rating_15" value="4" /><label for="star4_15">4 stars</label>
+										<input class="prefStar" type="radio" id="star3_15" name="rating_15" value="3" /><label for="star3_15">3 stars</label>
+										<input class="prefStar" type="radio" id="star2_15" name="rating_15" value="2" /><label for="star2_15">2 stars</label>
+										<input class="prefStar" type="radio" id="star1_15" name="rating_15" value="1" /><label for="star1_15">1 star</label>
+									</fieldset>
+									<div class="text"> Movie Name</div>
+								</div>
+							</div>										
+						</div>
+					</div>
+				
+				</div>
+	
+			</div>
+			<!-- end of movie preference list pg 3 -->
+	
+
 	
 			</div>
 
 		</div>
 	
+		<div id="preferenceButton" data-intro="Once you have rated 15 movies on this page, you can proceed." data-step="4"> 
+						<button id="preference" type="button" class="btn btn-primary">Next</button>
+		</div> 
 
-		<div class="mainNextbutton" class="next-button" data-intro="Once you have rated 15 movies on this page, you can proceed." data-step="4">
-			<a class="btn btn-primary" href="pg1.html" role="button" id="preference">NEXT</a>
-		</div>
+		<!--<div class="mainNextbutton" class="next-button" data-intro="Once you have rated 15 movies on this page, you can proceed." data-step="4">
+			<button class="btn btn-primary" role="button" id="preference">NEXT</button>
+		</div>  -->
 
 		<div id="footer-container" >
 			<div class="rankHolder" >
 				<span data-intro="You can track how many movies you have rated so far. You have to rate 15 in total." data-step="3"> Ranked Movies: </span>
-				<span> 0 </span>
+				<span id="NumberOfRankedMovies"> 0 </span>
 				<span><i>of 15</i></span>
 			</div>
 		</div>

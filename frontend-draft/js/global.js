@@ -60,7 +60,13 @@ $("#consent_Q tr td").click(function() {
 
 //preference page, when movie is selected, show interaction
  	$("input[type='radio']").click(function(){
- 		$("input.prefStar:checked").parentsUntil(".wrapper-block").not(".middle, .rating").css({"border": "5px solid gold"});
+
+ 		//$("input.prefStar:checked").parentUntil(".wrapper-block").not(".middle, .rating").css({"border": "5px solid gold"}).addClass("rated");
+ 		$("input.prefStar:checked").parent().parent().parent().css({"border": "5px solid gold"}).addClass("rated");
+
+        document.getElementById('NumberOfRankedMovies').innerHTML = document.querySelectorAll('.rated').length;
+
+ 		
 
  	});
  
@@ -117,9 +123,10 @@ $("#consent_Q tr td").click(function() {
        	$("#tester2").toggle();
     });
 	
-	$( "#preference" ).click(function() { 
+/*	$( "#preference" ).click(function() { 
    		$(location).attr('href', 'pg1.html');
-	});
+	});  
+	*/
 
 	//pg2 when choose buttin is clicked
 	$('span.choice').click(function(){
@@ -141,6 +148,30 @@ $("#consent_Q tr td").click(function() {
 		}
 
 	});
+
+
+
+//preference pages
+
+	$('#prefPage2, #prefPage3').hide();
+
+	let prefPgNo = 1;
+
+	$('#preferenceButton').click(function() {
+
+		if(prefPgNo != 3) {
+						$('#prefPage' + prefPgNo).hide().fadeOut("slow", function() {
+							prefPgNo = prefPgNo + 1;
+							$('#prefPage' + prefPgNo + '').show().fadeIn("slow");
+						});
+
+		} else {
+						window.location.href = "pg1.html";
+
+		}
+
+	});
+  
 	
 	
 	//survey page visual cue for completion (red/green) 
