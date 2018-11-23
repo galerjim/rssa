@@ -58,17 +58,26 @@ $("#consent_Q tr td").click(function() {
 		}
 	});
 
+	
+	document.getElementById("preference").style.background='#ccc';
+	
 //preference page, when movie is selected, show interaction
  	$("input[type='radio']").click(function(){
 
+ 		
  		//$("input.prefStar:checked").parentUntil(".wrapper-block").not(".middle, .rating").css({"border": "5px solid gold"}).addClass("rated");
  		$("input.prefStar:checked").parent().parent().parent().css({"border": "5px solid gold"}).addClass("rated");
 
-        document.getElementById('NumberOfRankedMovies').innerHTML = document.querySelectorAll('.rated').length;
+        document.getElementById('NumberOfRankedMovies').innerHTML = document.querySelectorAll('.rated').length;	
 
- 		
+        if(document.querySelectorAll('.rated').length == 15) {
+        	document.getElementById("preference").disabled = false;
+        	document.getElementById("preference").style.background='#0275d8';
+        }
 
  	});
+
+
  
 
 	//end of consent safeguard 
@@ -123,10 +132,10 @@ $("#consent_Q tr td").click(function() {
        	$("#tester2").toggle();
     });
 	
-/*	$( "#preference" ).click(function() { 
+	$( "#preference" ).click(function() { 
    		$(location).attr('href', 'pg1.html');
 	});  
-	*/
+	
 
 	//pg2 when choose buttin is clicked
 	$('span.choice').click(function(){
@@ -149,10 +158,8 @@ $("#consent_Q tr td").click(function() {
 
 	});
 
-
-
 //preference pages
-
+/*
 	$('#prefPage2, #prefPage3').hide();
 
 	let prefPgNo = 1;
@@ -172,7 +179,7 @@ $("#consent_Q tr td").click(function() {
 
 	});
   
-	
+*/	
 	
 	//survey page visual cue for completion (red/green) 
 	$(".question .rad_row td").click(function() {
@@ -200,10 +207,6 @@ $('#surveypage2, #surveypage3,#surveypage4, #surveypage5, #surveypage6, #surveyp
 
 					
 				
-			});
-
-
-
-	
+			});	
 
 });
