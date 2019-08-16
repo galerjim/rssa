@@ -78,7 +78,10 @@ $("#consent_Q tr td").click(function() {
  	});
 
 
- 
+ $('#left-list a').on('click', function (e) {
+  e.preventDefault()
+  $(this).('show')
+})
 
 	//end of consent safeguard 
     $("#mov1").hover(function(){
@@ -189,7 +192,7 @@ $("#consent_Q tr td").click(function() {
 		$(this).parent().parent().css("border-left", "3px solid #00cc00");
 	});
 	
-
+/*
 $('#surveypage2, #surveypage3,#surveypage4, #surveypage5, #surveypage6, #surveypage7, #surveypage8, #surveypage9, #surveypage10,#surveypage11,#surveypage12, #surveypage13, #surveypage14').hide();
 	
 	let pageNo = 1;
@@ -207,6 +210,6 @@ $('#surveypage2, #surveypage3,#surveypage4, #surveypage5, #surveypage6, #surveyp
 
 					
 				
-			});	
+			});	*/
 
 });

@@ -31,7 +31,7 @@
 				<span>PLEASE RATE 15 MOVIES THAT YOU HAVE WATCHED</span>
 			</div>
        		<ul class="progressbar">
-				<li class="active">Step 1</li>
+				<li >Step 1</li>
 				<li class="active">Step 2</li>
 				<li>Step 3</li>
 			</ul>  
@@ -42,9 +42,9 @@
 		<div class="block_holder">
 			<div class="list-container">
 				<div class="list-container left">
-					<div class="list-group" style="padding-top:30px; padding-left:5px;">	
+					<div class="list-group" id="left-list" role="tablist" style="padding-top:30px; padding-left:5px;">	
   						<div class="list-group-item" data-intro="Rate each movie in the list on the right and on the left. Hover over the movie for more information" data-step="2">Movies you may like</div>
-  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov1">Lion King<!--<p style="font-size:0.9em;padding:0px;"><i>1992</i></p>-->
+  					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov1">Lion King<!--<p style="font-size:0.9em;padding:0px;"><i>1992</i></p>-->
   						<fieldset class="rating" >
 					   		<input type="radio" id="star5_1" name="rating_1" value="5" /><label for="star5_1"></label>
 							<input type="radio" id="star4_1" name="rating_1" value="4" /><label for="star4_1"></label>
@@ -52,8 +52,8 @@
 							<input type="radio" id="star2_1" name="rating_1" value="2" /><label for="star2_1"></label>
 							<input type="radio" id="star1_1" name="rating_1" value="1" /><label for="star1_1"></label>
 						</fieldset>
-					</button>
-  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov2">The Notebook
+					</a>
+  					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov2">The Notebook
   						<fieldset class="rating">
 							<input type="radio" id="star5_2" name="rating_2" value="5" /><label for="star5_2"></label>
 							<input type="radio" id="star4_2" name="rating_2" value="4" /><label for="star4_2"></label>
@@ -61,8 +61,8 @@
 							<input type="radio" id="star2_2" name="rating_2" value="2" /><label for="star2_2"></label>
 							<input type="radio" id="star1_2" name="rating_2" value="1" /><label for="star1_2"></label>
 						</fieldset>
-					</button>
-  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov3">Men in Black II
+					</a>
+  					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov3">Men in Black II
   						<fieldset class="rating" >
 							<input type="radio" id="star5_3" name="rating_3" value="5" /><label for="star5_3"></label>
 							<input type="radio" id="star4_3" name="rating_3" value="4" /><label for="star4_3"></label>
@@ -70,8 +70,8 @@
 							<input type="radio" id="star2_3" name="rating_3" value="2" /><label for="star2_3"></label>
 							<input type="radio" id="star1_3" name="rating_3" value="1" /><label for="star1_3"></label>
 						</fieldset>
-  					</button>
-  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov4">Benjamin Button
+  					</a>
+  					<a  class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov4">Benjamin Button
   						<fieldset class="rating" >
 							<input type="radio" id="star5_4" name="rating_4" value="5" /><label for="star5_4"></label>
 							<input type="radio" id="star4_4" name="rating_4" value="4" /><label for="star4_4"></label>
@@ -79,8 +79,8 @@
 							<input type="radio" id="star2_4" name="rating_4" value="2" /><label for="star2_4"></label>
 							<input type="radio" id="star1_4" name="rating_4" value="1" /><label for="star1_4"></label>
 						</fieldset>
-  					</button>
-  					<button type="button" class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov5">300
+  					</a>
+  					<a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center" id="mov5">300
    						<fieldset class="rating" >
 							<input type="radio" id="star5_5" name="rating_5" value="5" /><label for="star5_5"></label>
 							<input type="radio" id="star4_5" name="rating_5" value="4" /><label for="star4_5"></label>
@@ -88,7 +88,7 @@
 							<input type="radio" id="star2_5" name="rating_5" value="2" /><label for="star2_5"></label>
 							<input type="radio" id="star1_5" name="rating_5" value="1" /><label for="star1_5"></label>
 						</fieldset>
-					</button>
+					</a>
 
 				</div>
 			</div>
