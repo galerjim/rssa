@@ -8,31 +8,9 @@ window.STUDY = (function() {
 		}
 		
 		var stepData = {};
+
+
 		
-		function getMovie(id, type, successCb, failureCb) {
-			return $.ajax({
-				type: 'GET',
-				url: '/api/movies',
-				data: {
-					id: id,
-					type: type
-				},
-				dataType: 'json',
-				success: successCb,
-				error: failureCb
-			});
-		}
-		
-		function getMovieCount(successCb, failureCb) {
-			return $.ajax({
-				type: 'GET',
-				url: '/api/movies/count',
-				data: {},
-				dataType: 'json',
-				success: successCb,
-				error: failureCb
-			});
-		}
 		
 		function getStepData(step, successCb, failureCb) {
 			return $.ajax({
@@ -105,8 +83,8 @@ window.STUDY = (function() {
 		}
 		
 		return {
-			getMovie: getMovie,
-			getMovieCount: getMovieCount,
+		//	getMovie: getMovie,
+		//	getMovieCount: getMovieCount,
 			getStepData: getStepData,
 			pushStepData: pushStepData,
 			popStepData: popStepData,
