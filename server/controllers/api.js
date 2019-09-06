@@ -9,6 +9,7 @@ const utils = require('../utils.js');
 const moviesModel = require('../models/movies.js');
 const usersModel = require('../models/users.js');
 const eventsModel = require('../models/events.js');
+const ratingsModel = require('../models/ratings.js');
 
 const moviesController = function(req, res, next) {
 	if (!(req.query.id && req.query.type)) return utils.sendErr(res, 'Missing parameter(s)');
@@ -93,10 +94,49 @@ const updateEventController = function(req, res, next) {
 	});
 }
 
+
+const updateRatingsController = function(req, res, next) {
+
+
+	if (!(req.body.ratings != 'undefined'))
+		return utils.sendErr(res, 'Missing parameter(s)');
+	
+	let ratings = JSON.parse(req.body.ratings);
+	ratingsModel.addRating(req, req.params.id, ratings, function() {
+		res.json({
+			'success': true
+		});
+
+		res.redirect('/' + req.params.id);
+	}, function(err) {
+		utils.sendErr(res, 'Error logging event :: ' + err);
+	});
+}
+
+
+
+const recommendeController = function(req, res, next) {
+
+
+	console.log("api-recommende");
+	ratingsModel.recommende(req, req.params.id,  function() {
+		res.json({
+			'success': true
+		});
+		
+		res.redirect('/' + req.params.id);
+	}, function(err) {
+		utils.sendErr(res, 'Error logging event :: ' + err);
+	});
+}
+
+
 module.exports = {
 	moviesController: moviesController,
 	moviesCountController: moviesCountController,
 	stepDataController: stepDataController,
 	updateStepController: updateStepController,
-	updateEventController: updateEventController
+	updateEventController: updateEventController,
+	updateRatingsController: updateRatingsController,
+	recommendeController: recommendeController
 }

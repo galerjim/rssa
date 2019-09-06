@@ -5,7 +5,7 @@ var consent_check = 0;
 $(document).ready(function() {
 
 	//Introduction page changes 
-	$('#consent, #consentButton, #resize, #resizeButton, #instructions, #instructionsBody, #begin, #preference2, #preference3').hide();
+	$('#consent, #consentButton, #resize, #resizeButton, #instructions, #instructionsBody, #begin, #preference1, #preference2, #preference3').hide();
 	$('#welcome').click(function() {
 		$('#optional, #mainBody, #welcome').hide();
 		$('#consent, #consentButton').show().fadeIn("slow");

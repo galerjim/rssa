@@ -1,13 +1,26 @@
 var nrOfMovies = $(".movie-block").length;
+var movieIDs = [];
 
 $(document).ready(function() {
-    loadRandomMovies();
+    //loadRandomMovies();
+
+    $("#start").click(function() {
+        //$(location).attr('href', 'pg1.html');
+        
+        
+        loadRandomMovies();
+        $('#start').hide();
+        $('#preference1').show().fadeIn("slow");
+   
+	});
 
     $("#preference1").click(function() {
         //$(location).attr('href', 'pg1.html');
         
         var hookpage = $("#movie_ribbon");
 		if (isRatingComplete(hookpage)) {
+            collectRatings(hookpage);
+            console.log("test2");
             resetRating(hookpage);
             loadRandomMovies();
             $('#preference1').hide();
@@ -21,6 +34,7 @@ $(document).ready(function() {
 		//$(location).attr('href', 'pg1.html');
 		var hookpage = $("#movie_ribbon");
 		if (isRatingComplete(hookpage)) {
+            collectRatings(hookpage);
             resetRating(hookpage);
             loadRandomMovies();
             $('#preference2').hide();
@@ -29,8 +43,10 @@ $(document).ready(function() {
 
 	});
 	$("#preference3").click(function() {
-		//$(location).attr('href', 'pg1.html');
-		window.STUDY.getInstance().move(2);
+        //$(location).attr('href', 'pg1.html');
+        
+        window.STUDY.getInstance().recommende();
+      //  window.STUDY.getInstance().move(2);
 	});
 
     $(".rating").click(function() {
@@ -39,7 +55,7 @@ $(document).ready(function() {
         
         var element = document.getElementById("ratingscount");
         element.innerHTML = ratingCount(hookpage).toString();
-        console.log(ratingCount(hookpage));
+ 
 	});
 
 });
@@ -47,15 +63,14 @@ $(document).ready(function() {
 
 function loadRandomMovies() {
     getMoviesCount(function(count) {
-        var promises = [];
+        
 
 		for (var i = 0; i < nrOfMovies; i++) {
 			var mID = 1 + Math.floor(Math.random() * count.result);
 			//match randomly selected movie to movieID
-        
-            promises.push(loadMovieInfo(i, mID, 'id_number'));
+            loadMovieInfo(i, mID, 'id_number');
 		}
-		$.when.apply($, promises).done(function() {
+		$.when.apply($, movieIDs).done(function() {
 	//		postInitialMovies();
 		});
 	});
@@ -77,8 +92,10 @@ function loadMovieInfo(itemNr, mID, mType) {
         // pictureURL = movieInfo.rtPictureURL;
         
         if (movieInfo){
-            if (movieInfo.result.poster.length > 0)
-			    pictureURL = movieInfo.result.poster;
+            if (movieInfo.result.poster.length > 0){
+                pictureURL = movieInfo.result.poster;
+                movieIDs.push(mID);
+            }
             else
                 pictureURL = '/img/m_1.jpg';
 
@@ -151,6 +168,21 @@ function resetRating(hookpage) {
     hookpage.find('input').removeAttr('checked');
  
 }
+
+function collectRatings(hookpage) {
+    var ratings = [];
+    for (var i = 1; i <= nrOfMovies; i++) {
+        var ratingVal = hookpage.find('input[name=rating_' + i + ']:checked').val();
+        if(!ratingVal) {
+            $(this).attr("data-under-process", "false");
+            return;
+        }
+        ratings.push([movieIDs[i-1], ratingVal]);
+    }
+    window.STUDY.getInstance().postRatings(ratings);
+}
+
+
 
 function ratingCount(hookpage) {
     var counter = 0;

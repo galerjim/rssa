@@ -82,6 +82,36 @@ window.STUDY = (function() {
 			form.submit();
 		}
 		
+		function postRatings(ratings) {
+			return $.ajax({
+				type: 'POST',
+				//url: '/api/update/ratings',
+				url: '/api/' + window.SESSION_DATA.userid + '/update/ratings',
+				data: {
+					//userid = 
+					ratings: JSON.stringify(ratings)
+				},
+				dataType: 'json',
+				error: function(err) {
+					console.log(err.responseText);
+				}
+			});
+		}
+
+		function recommende() {
+			return $.ajax({
+				type: 'POST',
+				//url: '/api/update/ratings',
+				url: '/api/' + window.SESSION_DATA.userid + '/recommende',
+				data: {
+				},
+				dataType: 'json',
+				error: function(err) {
+					console.log(err.responseText);
+				}
+			});
+		}
+
 		return {
 		//	getMovie: getMovie,
 		//	getMovieCount: getMovieCount,
@@ -90,6 +120,8 @@ window.STUDY = (function() {
 			popStepData: popStepData,
 			postStepData: postStepData,
 			postEvent: postEvent,
+			postRatings: postRatings,
+			recommende: recommende,
 			move: move
 		};
 	};

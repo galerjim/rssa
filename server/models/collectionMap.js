@@ -13,7 +13,8 @@ module.exports = {
 		MOVIES: 'movies',
 		USERS: 'rssa-users',
 		EVENTS: 'rssa-events',
-		CONDITIONS: 'rssa-conditions'
+		CONDITIONS: 'rssa-conditions',
+		RATINGS: 'rssa-ratings'
 	},
 	getCollection: getCollection
 };

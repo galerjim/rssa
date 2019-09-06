@@ -40,6 +40,19 @@ const addUser = function(req, userid, expCondition, successCb, failureCb) {
 			getUser(req, userid, successCb, failureCb);
 		}
 	});
+
+	let rating = {
+		userid: userid,
+		ratings: []
+	};
+	let users_rating = collectionMap.getCollection(req, collectionMap.COLLECTION_CONST.RATINGS);
+	users_rating.insert(rating, function(err) {
+		if (err) {
+			failureCb(err);
+		} else {
+			getUser(req, userid, successCb, failureCb);
+		}
+	});
 }
 
 const getMaxUserid = function(req, successCb, failureCb) {

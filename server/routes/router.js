@@ -19,9 +19,13 @@ router.get('/api/movies/count', apiController.moviesCountController);
 router.get('/api/:id/data/step/:step', apiController.stepDataController);
 router.post('/api/:id/update/step/:step', apiController.updateStepController);
 router.post('/api/:id/update/event', apiController.updateEventController);
+router.post('/api/:id/update/ratings', apiController.updateRatingsController);
+router.post('/api/:id/recommende', apiController.recommendeController);
+
 
 router.get('/', mainController.newController);
 router.get('/:id', mainController.idController);
 router.post('/:id/move', mainController.moveController);
+
 
 module.exports = router;

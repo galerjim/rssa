@@ -80,10 +80,14 @@ function createNewUser(req, res, userid) {
 }
 
 function handleExistingUser(req, res, doc) {
+
 	renderPageResponse(req, res, 'step_' + doc.step + '.html', doc, {
 		page: 'step_' + doc.step + '.html',
 		step: doc.step
 	}, true);
+
+
+
 }
 
 function renderPageResponse(req, res, page, data, eventDesc, setCookie) {
